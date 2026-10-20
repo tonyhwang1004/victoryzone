@@ -218,13 +218,58 @@ button{font:inherit;cursor:pointer}
 .price-notes li::before{content:"·";font-weight:900;color:var(--coral)}
 @media (max-width:640px){.price-notes{grid-template-columns:1fr}.price-table tbody th{padding-left:14px}}
 
-/* ---------- app ---------- */
-.apps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
-.app{background:#fff;border-radius:16px;padding:22px;border:1px solid var(--line)}
-.app i{font-style:normal;font-size:26px}
-.app h4{font-size:17px;font-weight:900;margin:10px 0 4px}
-.app p{font-size:14px;color:var(--muted)}
-@media (max-width:900px){.apps{grid-template-columns:repeat(2,1fr)}}
+/* ---------- YOU승리 program ---------- */
+.you{--yb:#2449B5;--yo:#E8573B;background:linear-gradient(180deg,#EEF2FC 0%,#fff 100%);overflow:hidden}
+.you .eyebrow{color:var(--yo)}
+.you-brand{display:inline-flex;align-items:center;gap:10px;font-weight:900;font-size:clamp(30px,4.6vw,46px);letter-spacing:-.02em;color:var(--yb)}
+.you-brand svg{width:clamp(34px,4vw,46px);height:auto}
+.you-brand .o{color:var(--yo)}
+.you-hero{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.you-hero h2{font-size:clamp(28px,4vw,40px);font-weight:900;line-height:1.25;letter-spacing:-.02em;margin:14px 0}
+.you-hero h2 em{font-style:normal;color:var(--yb)}
+.you-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:26px}
+.you-stats div{background:#fff;border:1px solid #DCE3F5;border-radius:14px;padding:14px 16px}
+.you-stats b{display:block;font-size:22px;font-weight:900;color:var(--yb)}
+.you-stats span{font-size:13px;color:var(--muted)}
+.phones{position:relative;height:560px}
+.phone{position:absolute;width:250px;border-radius:38px;padding:9px;background:#0E1440;box-shadow:0 30px 60px rgba(17,24,60,.28)}
+.phone img{border-radius:30px;width:100%;aspect-ratio:721/1560;object-fit:cover;object-position:top}
+.phone::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:84px;height:9px;border-radius:0 0 8px 8px;background:#0E1440;z-index:1}
+.phone.p1{left:6%;top:0;transform:rotate(-4deg)}
+.phone.p2{right:6%;top:46px;transform:rotate(5deg)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chips span{background:#fff;border:1px solid #DCE3F5;border-radius:999px;padding:7px 14px;font-size:14px;font-weight:700;color:var(--navy)}
+.yrow{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:center;margin-top:96px}
+.yrow.rev{grid-template-columns:1.15fr 1fr}
+.yrow.rev .ytext{order:2}
+.ytext .num{font-size:13px;font-weight:900;color:var(--yo);letter-spacing:.12em}
+.ytext h3{font-size:clamp(24px,3vw,32px);font-weight:900;letter-spacing:-.02em;line-height:1.3;margin:8px 0 12px}
+.ytext p{color:var(--muted)}
+.ytext ul{list-style:none;margin-top:20px;display:grid;gap:12px}
+.ytext li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start}
+.ytext li i{font-style:normal;width:28px;height:28px;border-radius:9px;background:#E7ECFA;color:var(--yb);display:grid;place-items:center;font-weight:900;font-size:14px}
+.ytext li b{display:block;font-size:16px}
+.ytext li span{font-size:14px;color:var(--muted)}
+.laptop{position:relative;padding:12px 12px 0;background:#0E1440;border-radius:16px 16px 0 0;box-shadow:0 30px 60px rgba(17,24,60,.22)}
+.laptop img{border-radius:6px 6px 0 0;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top left}
+.laptop::after{content:"";position:absolute;left:-6%;right:-6%;bottom:-14px;height:14px;background:linear-gradient(#C9CFE0,#A9B1C8);border-radius:0 0 14px 14px}
+.lap-wrap{padding-bottom:14px}
+.alerts{display:grid;gap:12px}
+.alert{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid #E1E5F0;border-radius:18px;padding:16px 18px;box-shadow:0 10px 24px rgba(17,24,60,.07)}
+.alert .ic{flex:none;width:40px;height:40px;border-radius:12px;background:#FEE500;display:grid;place-items:center;font-size:20px}
+.alert b{display:block;font-size:15px}
+.alert span{font-size:14px;color:var(--muted)}
+.alert time{margin-left:auto;font-size:12px;color:#9AA0BE;white-space:nowrap}
+@media (max-width:900px){
+  .you-hero,.yrow,.yrow.rev{grid-template-columns:1fr;gap:28px}
+  .yrow.rev .ytext{order:0}
+  .yrow{margin-top:64px}
+  .phones{height:470px;max-width:420px;margin:0 auto;width:100%}
+  .phone{width:200px;border-radius:32px}
+  .phone img{border-radius:25px}
+  .phone.p1{left:0}.phone.p2{right:0}
+  .you-stats{grid-template-columns:repeat(3,1fr)}
+}
 
 /* ---------- management ---------- */
 .mgmt{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
@@ -342,6 +387,7 @@ button{font:inherit;cursor:pointer}
     <nav class="nav" id="nav">
       <a href="#reading">관리형 독서실</a>
       <a href="#program">학습센터 프로그램</a>
+      <a href="#you">YOU승리</a>
       <a href="#facility">시설 둘러보기</a>
       <a href="#pricing">이용료</a>
       <a href="#care">생활관리</a>
@@ -604,21 +650,96 @@ button{font:inherit;cursor:pointer}
   </div>
 </section>
 
-<!-- ===== app ===== -->
-<section class="sec" id="app">
+<!-- ===== YOU승리 program ===== -->
+<section class="sec you" id="you">
   <div class="wrap">
-    <span class="eyebrow">App</span>
-    <h2 class="sec-title">재원생 전용 어플</h2>
-    <p class="sec-lead">독서실 생활을 더욱 간편하게. 학생과 학부모가 함께 확인합니다.</p>
-    <div class="apps">
-      <div class="app reveal"><i>📅</i><h4>출석 & 벌점</h4><p>모든 입퇴실 기록을 일자별로 확인</p></div>
-      <div class="app reveal"><i>🗓️</i><h4>등원일정</h4><p>학원 수강 등 사유로 출석이 어려운 일정을 미리 등록</p></div>
-      <div class="app reveal"><i>📝</i><h4>사유제출</h4><p>정기일정 외 지각·결석·외출·조퇴 사유 제출</p></div>
-      <div class="app reveal"><i>❓</i><h4>질의응답</h4><p>익명으로 질문하면 과목 담당 멘토가 답변</p></div>
-      <div class="app reveal"><i>💬</i><h4>메시지</h4><p>냉난방 조절 요청 등 모든 문의를 메시지로</p></div>
-      <div class="app reveal"><i>👨‍👩‍👧</i><h4>가족 채팅방</h4><p>학부모와 학생 간 채팅</p></div>
-      <div class="app reveal"><i>🔓</i><h4>방화벽 해제</h4><p>학습 목적 사이트 접속을 위한 해제 신청</p></div>
-      <div class="app reveal"><i>📊</i><h4>관리일지 확인</h4><p>20분 단위 관리 기록을 실시간 확인</p></div>
+    <div class="you-hero">
+      <div class="reveal">
+        <span class="eyebrow">Study Management Program</span><br>
+        <span class="you-brand" style="margin-top:12px">
+          <svg viewBox="0 0 40 52" aria-hidden="true"><circle cx="20" cy="9" r="6.5" fill="none" stroke="#E8573B" stroke-width="5"/><path d="M5 50V34a15 15 0 0 1 30 0v16" fill="none" stroke="#2449B5" stroke-width="6"/></svg>
+          Y<span class="o">O</span>U 승리
+        </span>
+        <h2>승리자리의 모든 관리는<br><em>YOU승리</em> 하나로 연결됩니다</h2>
+        <p class="sec-lead">출입·공부시간·플래너·벌점·상담 기록까지. 학생, 학부모, 원장과 멘토 선생님이 같은 화면을 보며 함께 관리하는 승리자리 전용 학습관리 프로그램입니다.</p>
+        <div class="you-stats">
+          <div><b>실시간</b><span>입실·외출·순공 시간</span></div>
+          <div><b>20분</b><span>단위 관리 기록</span></div>
+          <div><b>매일</b><span>플래너 점검</span></div>
+        </div>
+        <div class="chips">
+          <span>정기일정</span><span>출석·벌점</span><span>플래너</span><span>사유 제출</span><span>메시지</span><span>공지사항</span><span>방화벽 해제</span><span>의견 보내기</span><span>ON 질의응답</span>
+        </div>
+      </div>
+      <div class="phones reveal" aria-label="YOU승리 학생 앱 화면">
+        <div class="phone p1"><img src="images/you/m-home.jpg" alt="YOU승리 학생 앱 홈 — 오늘 공부한 시간과 수능 D-day" loading="lazy"></div>
+        <div class="phone p2"><img src="images/you/m-planner.jpg" alt="YOU승리 일일 플래너 — 오늘 할 일과 밀린 숙제" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="yrow">
+      <div class="ytext reveal">
+        <span class="num">01 · 학생 앱</span>
+        <h3>“오늘 벌써 7시간 공부했어”<br>내 공부가 숫자로 보입니다</h3>
+        <p>입실하는 순간부터 공부 시간이 쌓이고, 학생은 앱을 열 때마다 오늘의 성과를 확인합니다.</p>
+        <ul>
+          <li><i>⏱</i><div><b>실시간 순공 시간 · 수능 D-day</b><span>지금 IN/OUT 상태와 오늘 외출 시간까지 한 화면에</span></div></li>
+          <li><i>📊</i><div><b>일·주·월 공부시간 그래프</b><span>하루 평균과 요일별 흐름으로 공부 습관을 점검</span></div></li>
+          <li><i>📅</i><div><b>출결 달력</b><span>한 달 IN·OUT 기록과 날짜별 순공 시간을 한눈에</span></div></li>
+          <li><i>⭐</i><div><b>출석 · 상점 · 벌점</b><span>7일 연속 출석 상점 등 성실함을 바로 보상</span></div></li>
+        </ul>
+      </div>
+      <div class="lap-wrap reveal"><div class="phones" style="height:auto">
+        <div class="phone" style="position:relative;margin:0 auto;transform:none"><img src="images/you/m-attend.jpg" alt="YOU승리 출결 달력 — 한 달 IN·OUT 기록과 순공시간" loading="lazy"></div>
+      </div></div>
+    </div>
+
+    <div class="yrow rev">
+      <div class="ytext reveal">
+        <span class="num">02 · 온라인 플래너</span>
+        <h3>계획부터 검사까지,<br>플래너가 공부를 이끕니다</h3>
+        <p>입학할 때 사용법을 교육하고, 멘토 선생님이 매일 플래너를 점검합니다.</p>
+        <ul>
+          <li><i>📚</i><div><b>내 교재 · 오늘 할 일</b><span>과목별 교재를 등록하고 오늘 분량을 체크</span></div></li>
+          <li><i>↻</i><div><b>밀린 숙제 자동 이월</b><span>못 끝낸 숙제는 다음 날로 넘어와 끝까지 챙김</span></div></li>
+          <li><i>▶</i><div><b>버튼 한 번으로 시간 기록</b><span>학교·학원 일정과 함께 타임테이블에 순공 시간이 쌓임</span></div></li>
+          <li><i>✓</i><div><b>오늘 마무리 · 검사 받기</b><span>하루를 끝내고 검사를 받으면 포인트 적립</span></div></li>
+        </ul>
+      </div>
+      <div class="lap-wrap reveal"><div class="laptop"><img src="images/you/d-planner.jpg" alt="YOU승리 온라인 플래너 — 내 교재, 오늘 할 일, 타임테이블" loading="lazy"></div></div>
+    </div>
+
+    <div class="yrow">
+      <div class="ytext reveal">
+        <span class="num">03 · 원장·관리 대시보드</span>
+        <h3>지금 누가 자리에 있는지,<br>한 장으로 봅니다</h3>
+        <p>원장과 관리선생님은 출근하자마자 오늘의 독서실 상황을 확인하고, 필요한 학생에게 바로 연락합니다.</p>
+        <ul>
+          <li><i>👥</i><div><b>실시간 재실 · 교시별 출석</b><span>안면인식 출입 기록이 바로 반영</span></div></li>
+          <li><i>📝</i><div><b>20분 단위 관리일지 · 벌점</b><span>순찰 기록과 벌점이 학생별로 누적</span></div></li>
+          <li><i>🔔</i><div><b>확인할 일 자동 정리</b><span>미등원, 상담이 필요한 학생을 놓치지 않음</span></div></li>
+        </ul>
+      </div>
+      <div class="lap-wrap reveal"><div class="laptop"><img src="images/you/d-admin.jpg" alt="YOU승리 관리자 대시보드 — 지금 재실 인원, 교시별 재실, 확인할 일" loading="lazy"></div></div>
+    </div>
+
+    <div class="yrow rev">
+      <div class="ytext reveal">
+        <span class="num">04 · 학부모 안심 알림</span>
+        <h3>학부모님은 카카오톡으로<br>바로 확인합니다</h3>
+        <p>아이가 독서실에 잘 도착했는지, 오늘은 어떻게 지냈는지 따로 묻지 않아도 알 수 있습니다.</p>
+        <ul>
+          <li><i>🚪</i><div><b>등원 · 하원 · 미등원 알림</b><span>출입 기록과 연동되어 자동 발송</span></div></li>
+          <li><i>📩</i><div><b>벌점 · 정기일정 승인 요청</b><span>중요한 변화는 학부모님께 먼저</span></div></li>
+          <li><i>💬</i><div><b>가족 채팅방 · 관리기록 열람</b><span>학생의 하루를 학부모님도 함께 확인</span></div></li>
+        </ul>
+      </div>
+      <div class="alerts reveal" aria-label="학부모 알림 예시">
+        <div class="alert"><span class="ic">💬</span><div><b>[승리자리] 등원 알림</b><span>한서윤 학생이 08:52에 등원했습니다.</span></div><time>08:52</time></div>
+        <div class="alert"><span class="ic">💬</span><div><b>[승리자리] 오늘의 학습</b><span>순공 7시간 13분 · 플래너 검사 완료</span></div><time>22:05</time></div>
+        <div class="alert"><span class="ic">💬</span><div><b>[승리자리] 하원 알림</b><span>한서윤 학생이 22:10에 하원했습니다.</span></div><time>22:10</time></div>
+        <p class="note">※ 화면은 예시 학생 자료이며, 알림 문구는 실제 운영 시 달라질 수 있습니다.</p>
+      </div>
     </div>
   </div>
 </section>
