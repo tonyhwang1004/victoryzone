@@ -1002,18 +1002,16 @@ const io = new IntersectionObserver(es => es.forEach(en => {
 }), { threshold: .12 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-// 블로그 최신 글 (네이버 블로그 RSS)
+// 블로그 최신 글 — 단어시험 프로그램(Apps Script)이 네이버 블로그 RSS를 대신 읽어 줌 (30분 캐시)
 (function () {
   const box = document.getElementById('blogFeed');
-  const rss = 'https://rss.blog.naver.com/seungri-jari.xml';
   const esc = s => String(s || '').replace(/[&<>"]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]));
-  const fmt = d => { const t = new Date(String(d).replace(' ', 'T')); return isNaN(t) ? '' : `${t.getFullYear()}. ${t.getMonth() + 1}. ${t.getDate()}`; };
-  fetch('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rss))
+  fetch('https://script.google.com/macros/s/AKfycbygmyhCN8s35KWC3PBbyZFqzMJGqcMvb5tpqQvLcXBRrSGzrSNby-YKbN7Cun75nAazSQ/exec?action=blog')
     .then(r => r.json())
     .then(d => {
       if (!d.items || !d.items.length) throw new Error('empty');
-      box.innerHTML = d.items.slice(0, 4).map(it =>
-        `<a href="${esc(it.link)}" target="_blank" rel="noopener"><time>${fmt(it.pubDate)}</time><b>${esc(it.title)}</b></a>`
+      box.innerHTML = d.items.map(it =>
+        `<a href="${esc(it.link)}" target="_blank" rel="noopener"><time>${esc(it.date)}</time><b>${esc(it.title)}</b></a>`
       ).join('');
     })
     .catch(() => { box.innerHTML = '<p class="feed-msg">블로그에서 최신 소식을 확인해 주세요.</p>'; });
