@@ -216,6 +216,11 @@ button{font:inherit;cursor:pointer}
 .price-table td{font-size:clamp(20px,3vw,28px);font-weight:900;letter-spacing:-.02em}
 .price-table td span{font-size:15px;font-weight:700;color:var(--muted);margin-left:2px}
 .price-table tr.prem td{color:var(--coral-d)}
+.price-reg{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;padding:20px 24px;background:var(--bg-soft);border-bottom:1px solid var(--line)}
+.price-reg b{font-size:17px;font-weight:900}
+.price-reg small{display:block;margin-top:4px;font-size:13px;font-weight:600;color:var(--muted)}
+.price-reg strong{font-size:clamp(20px,3vw,26px);font-weight:900;letter-spacing:-.02em;white-space:nowrap}
+.price-reg strong span{font-size:15px;font-weight:700;color:var(--muted);margin-left:2px}
 .price-notes{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 24px;padding:22px 24px;background:var(--bg-soft);font-size:15px}
 .price-notes li{list-style:none;display:flex;gap:8px}
 .price-notes li::before{content:"·";font-weight:900;color:var(--coral)}
@@ -654,6 +659,10 @@ button{font:inherit;cursor:pointer}
           <tr class="prem"><th scope="row">프리미엄석<small>83–92번 · 10석</small></th><td>530,000<span>원</span></td><td>630,000<span>원</span></td></tr>
         </tbody>
       </table>
+      <div class="price-reg">
+        <div><b>신규 등록비</b> <span class="muted" style="font-size:13px;font-weight:700;color:var(--muted)">최초 1회</span><small>관리 프로그램(YOU승리) 등록 + 학습플랜 세팅 및 교육 + 입학교육</small></div>
+        <strong>50,000<span>원</span></strong>
+      </div>
       <ul class="price-notes">
         <li>월 단위 등록 (매월 마지막 주 재등록)</li>
         <li>비지정석: 사물함 이용료(월 3만원) 포함</li>
@@ -882,6 +891,10 @@ button{font:inherit;cursor:pointer}
         <p class="desc">* 표시는 필수 항목입니다.</p>
         <div class="fgrid">
           <div class="field"><label for="f-name">학생 이름 <span class="req">*</span></label><input id="f-name" name="name" required autocomplete="name"></div>
+          <div class="field"><label for="f-gender">성별 <span class="req">*</span></label>
+            <select id="f-gender" name="gender" required>
+              <option value="">선택해 주세요</option><option>남</option><option>여</option>
+            </select></div>
           <div class="field"><label for="f-grade">학년 <span class="req">*</span></label>
             <select id="f-grade" name="grade" required>
               <option value="">선택해 주세요</option><option>고1</option><option>고2</option><option>고3</option><option>예비 고1 (중3)</option>
@@ -893,14 +906,14 @@ button{font:inherit;cursor:pointer}
             </select></div>
           <div class="field"><label for="f-parent">학부모 연락처 <span class="req">*</span></label><input id="f-parent" name="parentPhone" type="tel" inputmode="tel" placeholder="010-0000-0000" required></div>
           <div class="field"><label for="f-student">학생 연락처</label><input id="f-student" name="studentPhone" type="tel" inputmode="tel" placeholder="010-0000-0000"></div>
-          <div class="field"><label for="f-start">희망 시작 시기</label><input id="f-start" name="start" placeholder="예: 12월 오픈일부터, 겨울방학부터"></div>
           <div class="field"><label for="f-source">알게 된 경로</label>
             <select id="f-source" name="source">
               <option value="">선택해 주세요</option><option>지인 소개</option><option>현수막·전단</option><option>네이버 검색</option><option>블로그</option><option>기타</option>
             </select></div>
+          <div class="field full"><label for="f-start">희망 시작 시기</label><input id="f-start" name="start" placeholder="예: 12월 오픈일부터, 겨울방학부터"></div>
           <div class="field full"><label for="f-msg">문의 사항</label><textarea id="f-msg" name="message" placeholder="궁금하신 점을 자유롭게 남겨 주세요."></textarea></div>
           <div class="hp" aria-hidden="true"><label>웹사이트<input name="website" tabindex="-1" autocomplete="off"></label></div>
-          <label class="agree"><input type="checkbox" id="f-agree" required> 상담 연락을 위한 개인정보(이름, 학교, 연락처) 수집·이용에 동의합니다 (<a href="/privacy/" target="_blank" style="color:inherit;text-decoration:underline">개인정보처리방침</a>). 수집된 정보는 상담 목적으로만 사용되며 상담 종료 후 1년 이내 파기합니다.</label>
+          <label class="agree"><input type="checkbox" id="f-agree" required> 상담 연락을 위한 개인정보(이름, 성별, 학교, 연락처) 수집·이용에 동의합니다 (<a href="/privacy/" target="_blank" style="color:inherit;text-decoration:underline">개인정보처리방침</a>). 수집된 정보는 상담 목적으로만 사용되며 상담 종료 후 1년 이내 파기합니다.</label>
           <button class="submit" type="submit" id="f-submit">대기 신청하기</button>
           <p class="form-msg" id="f-msg-out" role="status" aria-live="polite"></p>
         </div>
@@ -1030,8 +1043,8 @@ form.addEventListener('submit', async e => {
   out.className = 'form-msg'; out.textContent = '';
   const data = Object.fromEntries(new FormData(form).entries());
 
-  if (!data.name.trim() || !data.grade || !data.school.trim() || !data.parentPhone.trim()) {
-    out.className = 'form-msg err'; out.textContent = '학생 이름, 학년, 학교, 학부모 연락처를 입력해 주세요.'; return;
+  if (!data.name.trim() || !data.gender || !data.grade || !data.school.trim() || !data.parentPhone.trim()) {
+    out.className = 'form-msg err'; out.textContent = '학생 이름, 성별, 학년, 학교, 학부모 연락처를 입력해 주세요.'; return;
   }
   if (!phoneOk(data.parentPhone) || (data.studentPhone && !phoneOk(data.studentPhone))) {
     out.className = 'form-msg err'; out.textContent = '연락처를 010-0000-0000 형식으로 입력해 주세요.'; return;
