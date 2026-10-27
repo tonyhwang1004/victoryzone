@@ -216,11 +216,8 @@ button{font:inherit;cursor:pointer}
 .price-table td{font-size:clamp(20px,3vw,28px);font-weight:900;letter-spacing:-.02em}
 .price-table td span{font-size:15px;font-weight:700;color:var(--muted);margin-left:2px}
 .price-table tr.prem td{color:var(--coral-d)}
-.price-reg{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;padding:20px 24px;background:var(--bg-soft);border-bottom:1px solid var(--line)}
-.price-reg b{font-size:17px;font-weight:900}
-.price-reg small{display:block;margin-top:4px;font-size:13px;font-weight:600;color:var(--muted)}
-.price-reg strong{font-size:clamp(20px,3vw,26px);font-weight:900;letter-spacing:-.02em;white-space:nowrap}
-.price-reg strong span{font-size:15px;font-weight:700;color:var(--muted);margin-left:2px}
+.price-table tr.reg th,.price-table tr.reg td{background:var(--bg-soft)}
+.price-table tr.reg th em{font-style:normal;font-size:13px;font-weight:700;color:var(--muted);margin-left:6px}
 .price-notes{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 24px;padding:22px 24px;background:var(--bg-soft);font-size:15px}
 .price-notes li{list-style:none;display:flex;gap:8px}
 .price-notes li::before{content:"·";font-weight:900;color:var(--coral)}
@@ -657,12 +654,9 @@ button{font:inherit;cursor:pointer}
           <tr><th scope="row">비지정석<small>1–22번 · 22석 · 사물함 포함</small></th><td>440,000<span>원</span></td><td>540,000<span>원</span></td></tr>
           <tr><th scope="row">지정석<small>23–82번 · 60석</small></th><td>490,000<span>원</span></td><td>590,000<span>원</span></td></tr>
           <tr class="prem"><th scope="row">프리미엄석<small>83–92번 · 10석</small></th><td>530,000<span>원</span></td><td>630,000<span>원</span></td></tr>
+          <tr class="reg"><th scope="row">신규 등록비<em>최초 1회</em><small>관리 프로그램(YOU승리) 등록 + 학습플랜 세팅 및 교육 + 입학교육</small></th><td colspan="2">50,000<span>원</span></td></tr>
         </tbody>
       </table>
-      <div class="price-reg">
-        <div><b>신규 등록비</b> <span class="muted" style="font-size:13px;font-weight:700;color:var(--muted)">최초 1회</span><small>관리 프로그램(YOU승리) 등록 + 학습플랜 세팅 및 교육 + 입학교육</small></div>
-        <strong>50,000<span>원</span></strong>
-      </div>
       <ul class="price-notes">
         <li>월 단위 등록 (매월 마지막 주 재등록)</li>
         <li>비지정석: 사물함 이용료(월 3만원) 포함</li>
