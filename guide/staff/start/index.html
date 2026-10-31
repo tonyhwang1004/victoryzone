@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow"><!-- 직원 안내용: 검색에 노출하지 않음 -->
+<title>신규 직원 시작하기 | 승리자리 관리형 독서실</title>
+<meta name="theme-color" content="#11183C">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="/guide/guide.css">
+</head>
+<body>
+<header><a href="/">승리자리 <small>관리형 독서실</small></a></header>
+<section class="hero"><div class="in">
+  <span class="eyebrow">신규 직원</span>
+  <h1>첫날, 이 페이지 하나만<br>위에서부터 따라오세요</h1>
+  <p>가입 신청 → 원장님께 받을 것 → 영상 3개 → 실습 → 완료 보고. 30분이면 끝나요.</p>
+</div></section>
+<main>
+  <div class="progress" aria-live="polite"><div class="bar"><i id="pbar"></i></div><span id="ptext">0 / 5 단계</span></div>
+
+  <!-- 1. 가입 신청 -->
+  <article class="card step-card" id="s1">
+    <span class="num">1단계</span>
+    <h2>가입 신청</h2>
+    <p class="when">적어서 보내면 원장님께 문자로 바로 알림이 가요.</p>
+    <form id="joinForm" class="form" autocomplete="on">
+      <label>이름<input name="name" required maxlength="20" autocomplete="name"></label>
+      <label>휴대폰 번호<input name="phone" required inputmode="numeric" placeholder="01012345678" autocomplete="tel"></label>
+      <label>구글 메일 <small>(업무 시트를 공유받을 주소)</small><input name="email" type="email" placeholder="example@gmail.com" autocomplete="email"></label>
+      <label>근무 시작일<input name="start" placeholder="예: 11월 14일" maxlength="30"></label>
+      <input name="website" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+      <button class="primary" id="joinBtn">가입 신청 보내기</button>
+      <p class="form-msg" id="joinMsg"></p>
+    </form>
+    <p class="done-line" id="joinDone" hidden>✅ <b id="joinName"></b>님 가입 신청이 원장님께 전달됐어요. <a href="#" id="joinRedo">다시 보내기</a></p>
+  </article>
+
+  <!-- 2. 원장님께 받을 것 -->
+  <article class="card step-card" id="s2">
+    <span class="num">2단계</span>
+    <h2>원장님께 받을 것</h2>
+    <p class="when">받은 것은 체크하세요. 셋 다 받아야 업무를 할 수 있어요.</p>
+    <ul class="checks">
+      <li><label><input type="checkbox" data-k="get_pw"> <b>직원 비밀번호</b> — 단어시험 출력 · 성적 입력 · 신규 등록에 써요 (어디에도 적어 두지 마세요)</label></li>
+      <li><label><input type="checkbox" data-k="get_sheet"> <b>대기신청 시트 공유</b> — 1단계에 적은 구글 메일로 받아요</label></li>
+      <li><label><input type="checkbox" data-k="get_shift"> <b>근무 일정 · 데스크 위치 · 비상 연락처</b></label></li>
+    </ul>
+  </article>
+
+  <!-- 3. 영상 -->
+  <article class="card step-card" id="s3">
+    <span class="num">3단계</span>
+    <h2>업무 영상 3개 보기</h2>
+    <p class="when">끝까지 보면 자동으로 체크돼요. 자세한 순서는 <a href="/guide/staff/">직원 업무 영상</a> 페이지에 있어요.</p>
+    <div class="vid">
+      <label class="vh"><input type="checkbox" data-k="v_apply"> ① 대기신청 처리 <span>1분 12초</span></label>
+      <video controls playsinline preload="metadata" poster="/guide/videos/staff-apply.jpg" data-k="v_apply"><source src="/guide/videos/staff-apply.mp4" type="video/mp4"></video>
+    </div>
+    <div class="vid">
+      <label class="vh"><input type="checkbox" data-k="v_new"> ② 신규 학생 등록 <span>50초</span></label>
+      <video controls playsinline preload="metadata" poster="/guide/videos/staff-newstudent.jpg" data-k="v_new"><source src="/guide/videos/staff-newstudent.mp4" type="video/mp4"></video>
+    </div>
+    <div class="vid">
+      <label class="vh"><input type="checkbox" data-k="v_test"> ③ 단어시험 운영 <span>1분 3초</span></label>
+      <video controls playsinline preload="metadata" poster="/guide/videos/staff-wordtest.jpg" data-k="v_test"><source src="/guide/videos/staff-wordtest.mp4" type="video/mp4"></video>
+    </div>
+  </article>
+
+  <!-- 4. 실습 -->
+  <article class="card step-card" id="s4">
+    <span class="num">4단계</span>
+    <h2>실습 — 연습용 학생으로 해 보기</h2>
+    <p class="when">실제 학생 기록은 건드리지 않고, 연습용 계정으로만 해 보세요.</p>
+    <div class="note">연습용 학생: 이름 <b>테스트학생</b> · 학부모 뒷번호 <b>1234</b></div>
+    <ul class="checks">
+      <li><label><input type="checkbox" data-k="p_login"> 단어시험 페이지에서 <b>테스트학생</b>으로 본인확인하기</label></li>
+      <li><label><input type="checkbox" data-k="p_test"> 시험 한 번 보고, <b>「📖 내 오답노트」</b> 열어 보기 (학생이 보는 화면)</label></li>
+      <li><label><input type="checkbox" data-k="p_print"> <b>「🖨️ 직원: 오늘 시험지 일괄 출력」</b> 화면까지 들어가 보기 (인쇄는 안 해도 돼요)</label></li>
+    </ul>
+    <p class="warn">⚠️ 「신규 학생 등록」은 실습하지 마세요. 실제 명단에 들어가요. 처음 등록할 땐 원장님과 함께 하세요.</p>
+    <div class="btns"><a class="go" href="/wordtest/" target="_blank" rel="noopener">단어시험 페이지 열기 (새 탭) →</a></div>
+  </article>
+
+  <!-- 5. 완료 보고 -->
+  <article class="card step-card" id="s5">
+    <span class="num">5단계</span>
+    <h2>교육 완료 보고</h2>
+    <p class="when" id="doneHint">1~4단계를 모두 마치면 버튼이 켜져요.</p>
+    <button class="primary" id="doneBtn" disabled>원장님께 교육 완료 보고하기</button>
+    <p class="form-msg" id="doneMsg"></p>
+  </article>
+
+  <div class="note">앞으로는 일이 헷갈릴 때 <a href="/guide/staff/"><b>직원 업무 영상</b></a>에서 해당 영상만 다시 보면 돼요. 학생 · 학부모님께 안내할 땐 <a href="/guide/"><b>victoryzone.co.kr/guide</b></a> 링크를 보내 주세요.</div>
+</main>
+<footer>© 2026 승리자리 관리형 학습센터 · <a href="/guide/staff/">직원 업무 영상</a></footer>
+
+<script>
+// 신규 직원 가입·완료 보고 → 대기신청 Apps Script 웹 앱 (원장님께 문자·메일)
+const APPLY_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwCJIog7S3BWlQXza-Y_WoRQMeoM3XJM2WK6zhE5jX5x-NXrbEtSGbM54_QMWC4NdqEaQ/exec';
+const KEY = 'vz_staff_start';
+
+// 진행 상황은 이 기기에만 저장 (사생활 모드 등에서는 저장 없이 동작)
+let st = {};
+try { st = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (_) {}
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (_) {} };
+
+const STEPS = { s1: ['joined'], s2: ['get_pw', 'get_sheet', 'get_shift'], s3: ['v_apply', 'v_new', 'v_test'], s4: ['p_login', 'p_test', 'p_print'], s5: ['reported'] };
+
+function render() {
+  document.querySelectorAll('input[type=checkbox][data-k]').forEach(c => { c.checked = !!st[c.dataset.k]; });
+  let n = 0;
+  for (const [id, keys] of Object.entries(STEPS)) {
+    const ok = keys.every(k => st[k]);
+    document.getElementById(id).classList.toggle('ok', ok);
+    if (ok) n++;
+  }
+  document.getElementById('pbar').style.width = (n / 5 * 100) + '%';
+  document.getElementById('ptext').textContent = n === 5 ? '완료! 수고하셨어요 🎉' : n + ' / 5 단계';
+  const joined = !!st.joined;
+  document.getElementById('joinForm').hidden = joined;
+  document.getElementById('joinDone').hidden = !joined;
+  document.getElementById('joinName').textContent = st.name || '';
+  const ready = ['s1', 's2', 's3', 's4'].every(id => STEPS[id].every(k => st[k]));
+  const btn = document.getElementById('doneBtn');
+  btn.disabled = !ready || st.reported;
+  if (st.reported) btn.textContent = '✅ 보고 완료';
+  document.getElementById('doneHint').textContent = ready ? '원장님께 문자로 알려 드려요.' : '1~4단계를 모두 마치면 버튼이 켜져요.';
+}
+
+document.addEventListener('change', e => {
+  const c = e.target;
+  if (c.matches('input[type=checkbox][data-k]')) { st[c.dataset.k] = c.checked; save(); render(); }
+});
+document.querySelectorAll('video[data-k]').forEach(v => v.addEventListener('ended', () => { st[v.dataset.k] = true; save(); render(); }));
+
+async function post(data) {
+  // Apps Script는 CORS 응답을 주지 않으므로 no-cors로 보내고, 네트워크 오류만 감지
+  await fetch(APPLY_ENDPOINT, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) });
+}
+
+const form = document.getElementById('joinForm');
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = Object.fromEntries(new FormData(form));
+  const msg = document.getElementById('joinMsg');
+  f.phone = f.phone.replace(/\D/g, '');
+  if (!f.name.trim() || !/^01[016789]\d{7,8}$/.test(f.phone)) { msg.className = 'form-msg err'; msg.textContent = '이름과 휴대폰 번호(010으로 시작)를 확인해 주세요.'; return; }
+  const btn = document.getElementById('joinBtn');
+  btn.disabled = true; btn.textContent = '보내는 중…';
+  try {
+    await post({ kind: 'staff_join', name: f.name.trim(), phone: f.phone, email: f.email, start: f.start, website: f.website });
+    Object.assign(st, { joined: true, name: f.name.trim(), phone: f.phone }); save(); render();
+    msg.textContent = '';
+  } catch (_) {
+    msg.className = 'form-msg err'; msg.textContent = '전송에 실패했어요. 잠시 후 다시 해 보시거나 원장님께 직접 알려 주세요.';
+  } finally { btn.disabled = false; btn.textContent = '가입 신청 보내기'; }
+});
+document.getElementById('joinRedo').addEventListener('click', e => {
+  e.preventDefault(); st.joined = false; save(); render();
+  form.elements.name.value = st.name || ''; form.elements.phone.value = st.phone || '';
+});
+
+document.getElementById('doneBtn').addEventListener('click', async () => {
+  const btn = document.getElementById('doneBtn'), msg = document.getElementById('doneMsg');
+  btn.disabled = true; btn.textContent = '보내는 중…';
+  try {
+    await post({ kind: 'staff_done', name: st.name, phone: st.phone });
+    st.reported = true; save();
+    msg.className = 'form-msg ok'; msg.textContent = '원장님께 보고했어요. 오늘부터 잘 부탁드려요!';
+  } catch (_) {
+    msg.className = 'form-msg err'; msg.textContent = '전송에 실패했어요. 잠시 후 다시 눌러 주세요.';
+    btn.textContent = '원장님께 교육 완료 보고하기';
+  }
+  render();
+});
+
+render();
+</script>
+</body>
+</html>

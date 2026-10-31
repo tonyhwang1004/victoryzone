@@ -18,6 +18,20 @@
   <p>각 1분 남짓. 소리 없이 자막만 보셔도 따라 할 수 있어요.</p>
 </div></section>
 <main>
+  <article class="card step-card" id="week">
+    <span class="num">등록 첫 주</span>
+    <h2>첫 주 체크리스트</h2>
+    <p class="when">위에서부터 하나씩 해 보세요. 영상은 끝까지 보면 자동으로 체크돼요.</p>
+    <div class="progress" style="margin:0 0 12px"><div class="bar"><i id="pbar"></i></div><span id="ptext">0 / 5</span></div>
+    <ul class="checks">
+      <li><label><input type="checkbox" data-k="v_word"> <span><a href="#wordtest">영상 1</a> 단어시험 · 오답노트 사용법 보기</span></label></li>
+      <li><label><input type="checkbox" data-k="w_login"> <span>단어시험 첫 본인확인 — 이름 + 학부모님 번호 뒤 4자리</span></label></li>
+      <li><label><input type="checkbox" data-k="w_code"> <span>데스크에서 <b>YOU승리 앱 가입 코드</b> 받기</span></label></li>
+      <li><label><input type="checkbox" data-k="v_app"> <span><a href="#app">영상 2</a> YOU승리 앱 · 플래너 첫 사용 보기</span></label></li>
+      <li><label><input type="checkbox" data-k="w_plan"> <span>앱 가입하고 플래너로 첫날 <b>「오늘 마무리 · 검사 받기」</b></span></label></li>
+    </ul>
+  </article>
+
   <nav class="toc">
     <b>영상 목록</b>
     <ol>
@@ -30,7 +44,7 @@
     <span class="num">영상 1</span>
     <h2>단어시험 · 오답노트 사용법</h2>
     <p class="when">단어시험 보는 날, 시작 전에 한 번 보세요.</p>
-    <video controls playsinline preload="metadata" poster="/guide/videos/student-wordtest.jpg">
+    <video controls playsinline preload="metadata" poster="/guide/videos/student-wordtest.jpg" data-k="v_word">
       <source src="/guide/videos/student-wordtest.mp4" type="video/mp4">
     </video>
     <ol class="steps">
@@ -48,7 +62,7 @@
     <span class="num">영상 2</span>
     <h2>YOU승리 앱 · 플래너 첫 사용</h2>
     <p class="when">등록하고 처음 앱을 열 때 보세요.</p>
-    <video controls playsinline preload="metadata" poster="/guide/videos/student-app.jpg">
+    <video controls playsinline preload="metadata" poster="/guide/videos/student-app.jpg" data-k="v_app">
       <source src="/guide/videos/student-app.mp4" type="video/mp4">
     </video>
     <ol class="steps">
@@ -62,5 +76,23 @@
   <div class="note">궁금한 점은 데스크에 물어보시거나 <a href="tel:01092998255"><b>010-9299-8255</b></a>로 연락 주세요.</div>
 </main>
 <footer>© 2026 승리자리 관리형 학습센터 · <a href="/">홈으로</a></footer>
+<script>
+// 첫 주 체크리스트 — 이 기기에만 저장 (저장이 막힌 환경에서도 체크는 동작)
+const KEY = 'vz_guide_week';
+let st = {};
+try { st = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (_) {}
+const keys = [...document.querySelectorAll('#week input[data-k]')].map(c => c.dataset.k);
+function render() {
+  document.querySelectorAll('#week input[data-k]').forEach(c => { c.checked = !!st[c.dataset.k]; });
+  const n = keys.filter(k => st[k]).length;
+  document.getElementById('pbar').style.width = (n / keys.length * 100) + '%';
+  document.getElementById('ptext').textContent = n === keys.length ? '완료 🎉' : n + ' / ' + keys.length;
+  document.getElementById('week').classList.toggle('ok', n === keys.length);
+}
+function set(k, v) { st[k] = v; try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (_) {} render(); }
+document.getElementById('week').addEventListener('change', e => { if (e.target.dataset.k) set(e.target.dataset.k, e.target.checked); });
+document.querySelectorAll('video[data-k]').forEach(v => v.addEventListener('ended', () => set(v.dataset.k, true)));
+render();
+</script>
 </body>
 </html>

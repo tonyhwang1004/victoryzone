@@ -33,3 +33,34 @@ video{display:block;width:100%;border-radius:12px;background:#000}
 footer{text-align:center;color:var(--muted);font-size:14px;padding:0 16px 40px}
 footer a{color:var(--navy);font-weight:700}
 @media (max-width:600px){.hero h1{font-size:25px}.card h2{font-size:20px}}
+
+/* 신규 직원 시작하기 · 첫 주 체크리스트 */
+.progress{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-bottom:20px;font-weight:700;font-size:15px}
+.progress .bar{flex:1;height:10px;background:var(--soft);border-radius:999px;overflow:hidden}
+.progress i{display:block;height:100%;width:0;background:var(--coral);transition:width .3s}
+.step-card.ok{border-color:#9BD3A8}
+.step-card.ok .num{background:#2E9E57}
+.step-card.ok .num::after{content:" ✓"}
+.form{display:grid;gap:12px}
+.form label{display:grid;gap:4px;font-weight:700;font-size:15px}
+.form small{font-weight:400;color:var(--muted)}
+.form input{font:inherit;font-weight:400;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--navy)}
+.form .hp{position:absolute;left:-9999px;width:1px;height:1px}
+button.primary{font:inherit;font-weight:800;font-size:16px;padding:13px 18px;border:0;border-radius:12px;background:var(--navy);color:#fff;cursor:pointer}
+button.primary:disabled{background:#C9CEE3;cursor:not-allowed}
+.form-msg{margin:4px 0 0;font-size:15px}
+.form-msg.err{color:#C62842}
+.form-msg.ok{color:#2E9E57;font-weight:700}
+.done-line{margin:0;font-size:16px}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.checks label{display:block;position:relative;background:var(--soft);border-radius:10px;padding:10px 12px 10px 42px;cursor:pointer;font-size:15px}
+.checks input{position:absolute;left:12px;top:12px;width:20px;height:20px;margin:0;accent-color:#2E9E57}
+.vh input{width:20px;height:20px;flex:none;margin:0;accent-color:#2E9E57}
+.vid{margin-top:14px}
+.vh{display:flex;gap:8px;align-items:center;font-weight:800;margin-bottom:8px;cursor:pointer}
+.vh span{color:var(--muted);font-weight:400;font-size:14px}
+.warn{color:#9A4A00;font-size:15px;margin:12px 0 0}
+.card .note{margin:0 0 12px}
+.start-banner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;background:var(--lime);border-radius:16px;padding:14px 18px;margin-bottom:20px;font-weight:700}
+.start-banner a{background:var(--navy);color:#fff;text-decoration:none;padding:9px 16px;border-radius:10px;font-weight:800}
+[hidden]{display:none!important}
