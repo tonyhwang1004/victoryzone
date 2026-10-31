@@ -1875,7 +1875,7 @@
         style="display:none; margin-bottom:8px;">
   🔁 오답 재시험
 </button>
-<button class="btn btn-secondary" onclick="goWrongNote()"
+<button class="btn btn-secondary" onclick="switchTab('note')"
         style="margin-top:0; margin-bottom:8px;">
   📖 내 오답노트 보기
 </button>
@@ -2298,6 +2298,7 @@ _allWords: [],
     document.getElementById('name').value = '';
     document.getElementById('parentLast4').value = '';
     document.querySelectorAll('.floor-btn[data-floor]').forEach(b => b.classList.remove('active'));
+    selectFloor('3층');   // 이매점은 3층만 운영 — 층 선택 칸이 숨겨져 있으므로 다시 고정
     goStep(1);
   }
 
@@ -3979,8 +3980,7 @@ _allWords: [],
 
   // 폼 초기화
   function resetNewStudentForm() {
-    _nsFloor = '';
-    document.querySelectorAll('.floor-btn[data-ns-floor]').forEach(b => b.classList.remove('active'));
+    selectNsFloor('3층');   // 이매점은 3층만 운영 — 층 선택 칸이 숨겨져 있으므로 비우지 않음
     document.getElementById('ns-name').value = '';
     document.getElementById('ns-parent-phone').value = '';
     document.getElementById('ns-seat').value = '';
@@ -4033,6 +4033,7 @@ _allWords: [],
       });
 
       if (result.status === 'success') {
+        resetNewStudentForm();   // 안내 메시지를 지우므로 먼저 실행
         const last4 = parentPhone.slice(-4);
         showMsg('ns-submit',
           '✅ 등록 완료!\n\n' +
@@ -4043,7 +4044,6 @@ _allWords: [],
           '학부모 뒷자리: ' + last4 + '\n\n' +
           '학생에게 본인확인 화면에서 위 정보로 로그인하라고 안내해주세요.',
           'success');
-        resetNewStudentForm();
         setTimeout(() => document.getElementById('ns-name').focus(), 100);
       } else {
         showMsg('ns-submit', '❌ ' + (result.message || '등록 실패'), 'error');
