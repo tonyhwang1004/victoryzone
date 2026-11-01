@@ -1749,12 +1749,9 @@
 
       <div class="msg" id="msg-ns-submit"></div>
 
-      <!-- 등록 완료 후: 방문 등록 학생 학부모님께 안내 영상 문자 (대기신청 학생은 시트에서 자동 발송) -->
-      <div id="ns-welcome" style="display:none; margin-top: 12px; padding: 14px; border: 1px solid var(--border, #e5e7eb); border-radius: 12px; text-align: left;">
-        <div style="font-weight: 800; margin-bottom: 6px;">📩 학부모님께 안내 영상 보내기</div>
-        <div style="font-size: 12px; color: var(--muted); margin-bottom: 10px;">방문해서 바로 등록한 학생만 보내 주세요. 홈페이지 대기신청으로 온 학생은 시트에서 「등록」으로 바꾸면 자동으로 가요.</div>
-        <a class="btn btn-primary" id="ns-welcome-sms" href="#" style="display:block; text-align:center; text-decoration:none;">📱 학부모님께 안내 문자 보내기</a>
-        <button class="btn btn-secondary" type="button" onclick="copyWelcomeText()">📋 문구 복사 (카톡으로 보낼 때)</button>
+      <!-- 등록 완료 후: 안내 영상은 YOU승리 앱이 첫 로그인 때 보여 준다 -->
+      <div id="ns-welcome" style="display:none; margin-top: 12px; padding: 14px; border: 1px solid var(--border, #e5e7eb); border-radius: 12px; text-align: left; font-size: 13px;">
+        📲 학생에게 <b>YOU승리 앱 가입</b>을 안내해 주세요. 가입하고 처음 들어가면 <b>안내 영상(단어시험 · 앱 · 플래너)</b>이 첫 화면에 떠요.
       </div>
     </div>
   </div>
@@ -4006,30 +4003,6 @@ _allWords: [],
     document.getElementById('ns-welcome').style.display = 'none';
   }
 
-  // 신규 학생 환영 문구 (대기신청 Apps Script의 자동 발송 문구와 같은 내용)
-  let _welcomeText = '';
-  function welcomeText(name) {
-    return '[승리자리 관리형 독서실]\n' +
-      name + ' 학생, 등록을 환영합니다.\n\n' +
-      '처음 오신 분이 알아야 할 내용을 1분짜리 영상 2개로 정리했어요.\n' +
-      '① 단어시험·오답노트 사용법\n' +
-      '② YOU승리 앱·플래너 첫 사용\n' +
-      'https://www.victoryzone.co.kr/guide/\n\n' +
-      '단어시험 본인확인은 「이름 + 학부모님 전화번호 뒤 4자리」입니다.\n' +
-      'YOU승리 앱 가입 코드는 데스크에서 받으세요.\n\n' +
-      '궁금한 점: 010-9299-8255';
-  }
-  function showWelcome(name, parentPhone) {
-    _welcomeText = welcomeText(name);
-    const to = /^01[016789]\d{7,8}$/.test(parentPhone) ? parentPhone : '';
-    document.getElementById('ns-welcome-sms').href = 'sms:' + to + '?&body=' + encodeURIComponent(_welcomeText);
-    document.getElementById('ns-welcome').style.display = 'block';
-  }
-  async function copyWelcomeText() {
-    try { await navigator.clipboard.writeText(_welcomeText); alert('문구를 복사했어요. 카톡 대화창에 붙여 넣으세요.'); }
-    catch (_) { prompt('아래 문구를 복사하세요', _welcomeText); }
-  }
-
   // 신규 학생 등록 제출
   async function submitNewStudent() {
     if (!_nsAuthenticated) {
@@ -4086,7 +4059,7 @@ _allWords: [],
           '학부모 뒷자리: ' + last4 + '\n\n' +
           '학생에게 본인확인 화면에서 위 정보로 로그인하라고 안내해주세요.',
           'success');
-        showWelcome(name, parentPhone);
+        document.getElementById('ns-welcome').style.display = 'block';
         setTimeout(() => document.getElementById('ns-name').focus(), 100);
       } else {
         showMsg('ns-submit', '❌ ' + (result.message || '등록 실패'), 'error');
