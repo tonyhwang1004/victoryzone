@@ -112,7 +112,7 @@ button{font:inherit;cursor:pointer}
 }
 
 /* ---------- category cards ---------- */
-.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cats{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .cat{position:relative;display:flex;flex-direction:column;justify-content:space-between;min-height:190px;padding:26px;border-radius:var(--radius);background:#fff;border:1px solid var(--line);transition:transform .2s,box-shadow .2s}
 .cat:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(17,24,60,.12)}
 .cat .no{font-size:13px;font-weight:900;color:var(--coral)}
@@ -178,7 +178,7 @@ button{font:inherit;cursor:pointer}
 }
 
 /* ---------- quick menu + features ---------- */
-.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.quick{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .quick a,.quick div{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:24px 26px;border-radius:var(--radius);background:#fff;border:1px solid var(--line);font-weight:900;font-size:19px}
 .quick a:hover{border-color:var(--coral)}
 .quick .arrow{width:38px;height:38px;border-radius:50%;background:var(--coral);color:#fff;display:grid;place-items:center;flex:none}
@@ -221,7 +221,7 @@ button{font:inherit;cursor:pointer}
 .price-notes{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 24px;padding:22px 24px;background:var(--bg-soft);font-size:15px}
 .price-notes li{list-style:none;display:flex;gap:8px}
 .price-notes li::before{content:"·";font-weight:900;color:var(--coral)}
-@media (max-width:640px){.price-notes{grid-template-columns:1fr}.price-table tbody th{padding-left:14px}}
+@media (max-width:640px){.price-notes{grid-template-columns:1fr}.price-table th,.price-table td{padding:14px 6px}.price-table tbody th{padding-left:12px;font-size:15px}.price-table tbody th small{font-size:11px}.price-table td{font-size:17px}.price-table td span{font-size:12px;margin-left:1px}.price-table thead th{font-size:13px}.price-table thead th small{font-size:10px}}
 
 /* ---------- seat map ---------- */
 .seatmap{margin-top:24px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px}
@@ -403,7 +403,7 @@ button{font:inherit;cursor:pointer}
     </a>
     <nav class="nav" id="nav">
       <a href="#reading">스터디센터</a>
-      <a href="#program">학습센터 프로그램</a>
+      <a href="#program">학습관리 프로그램</a>
       <a href="#you">YOU승리</a>
       <a href="#facility">시설 둘러보기</a>
       <a href="#pricing">이용료</a>
@@ -454,12 +454,8 @@ button{font:inherit;cursor:pointer}
         <span class="go">자세히 보기 →</span>
       </a>
       <a class="cat reveal" href="#program">
-        <div><span class="no">02</span><h3>승리자리 학습센터 프로그램</h3><p>재원생 모두에게 제공되는 1:1 맞춤 관리</p></div>
+        <div><span class="no">02</span><h3>승리자리 학습관리 프로그램</h3><p>재원생 모두에게 제공되는 1:1 맞춤 관리</p></div>
         <span class="go">프로그램 보기 →</span>
-      </a>
-      <a class="cat reveal" href="/wordtest/">
-        <div><span class="no">03</span><h3>단어 시험 (영어)</h3><p>온라인 응시 · 시험지 출력 · 오답노트까지 재원생 전용 영단어 시험</p></div>
-        <span class="go">시험 보러 가기 →</span>
       </a>
     </div>
   </div>
@@ -501,11 +497,11 @@ button{font:inherit;cursor:pointer}
 <section class="sec sec-navy" id="program">
   <div class="wrap">
     <span class="eyebrow">Learning Center</span>
-    <h2 class="sec-title">승리자리 학습센터 프로그램</h2>
+    <h2 class="sec-title">승리자리 학습관리 프로그램</h2>
     <p class="motto">“너의 승리를 책임진다”</p>
     <p class="sec-lead" style="margin-top:8px">승리자리 관리형 스터디센터 재원생 모두에게 제공되는 <b style="color:#fff">1:1 맞춤 관리 (필수)</b></p>
 
-    <div class="prog-tabs" role="tablist" aria-label="학습센터 프로그램">
+    <div class="prog-tabs" role="tablist" aria-label="학습관리 프로그램">
       <button class="prog-tab" role="tab" id="t2" aria-controls="p2" aria-selected="true"><small>PROGRAM 1</small>시기별 맞춤 관리</button>
       <button class="prog-tab" role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1"><small>PROGRAM 2</small>1:1 원장 정기상담</button>
       <button class="prog-tab" role="tab" id="t4" aria-controls="p4" aria-selected="false" tabindex="-1"><small>PROGRAM 3</small>수시·정시 컨설팅</button>
@@ -564,7 +560,6 @@ button{font:inherit;cursor:pointer}
     <div class="quick">
       <a href="#apply" class="reveal">대기 신청하기 <span class="arrow">→</span></a>
       <a href="#facility" class="reveal">시설 둘러보기 <span class="arrow">→</span></a>
-      <div class="reveal">1등급 질의응답 선생님 <span class="badge soft">준비 중</span></div>
     </div>
     <div class="feats">
       <div class="feat reveal">
@@ -620,7 +615,7 @@ button{font:inherit;cursor:pointer}
   <div class="wrap">
     <span class="eyebrow">Pricing</span>
     <h2 class="sec-title">승리자리 관리형 스터디센터 이용료</h2>
-    <p class="sec-lead">4주 단위 이용료 · 학습센터 프로그램(1:1 맞춤 관리)이 모두 포함된 금액입니다. 총 92석 운영.</p>
+    <p class="sec-lead">4주 단위 이용료 · 학습관리 프로그램(1:1 맞춤 관리)이 모두 포함된 금액입니다. 총 92석 운영.</p>
     <div class="price-card reveal" style="margin-top:36px">
       <table class="price-table">
         <thead>
@@ -908,7 +903,6 @@ button{font:inherit;cursor:pointer}
         <dl>
           <dt>주소</dt><dd>경기도 성남시 분당구 판교로 438<br>경림빌딩 3층 (1층 다이소)</dd>
           <dt>문의</dt><dd><a href="tel:01092998255" style="color:var(--ink);font-weight:800">010-9299-8255</a></dd>
-          <dt>대상</dt><dd>학생·수험생·일반 누구나</dd>
           <dt>오픈</dt><dd>2026년 12월 초</dd>
         </dl>
         <div class="btns">
