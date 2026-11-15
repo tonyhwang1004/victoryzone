@@ -14,7 +14,7 @@
 <section class="hero"><div class="in">
   <span class="eyebrow">직원용</span>
   <h1>직원 업무 영상</h1>
-  <p>처음 오신 분은 세 개를 순서대로 보고, 그다음부터는 필요할 때 해당 영상만 다시 보세요.</p>
+  <p>처음 오신 분은 <span id="vcount">세 개를</span> 순서대로 보고, 그다음부터는 필요할 때 해당 영상만 다시 보세요.</p>
 </div></section>
 <main>
   <div class="start-banner"><span>처음 오셨나요? 가입부터 교육 완료까지 한 페이지에서</span><a href="/guide/staff/start/">신규 직원 시작하기 →</a></div>
@@ -23,8 +23,8 @@
     <b>영상 목록</b>
     <ol>
       <li><a href="#apply">대기신청 처리</a> <span>1분 12초 · 홈페이지로 신청이 들어왔을 때</span></li>
-      <li><a href="#newstudent">신규 학생 등록</a> <span>50초 · 새 학생이 등록했을 때</span></li>
-      <li><a href="#wordtest">단어시험 운영</a> <span>1분 3초 · 매일 시험 시간</span></li>
+      <li class="wordtest"><a href="#newstudent">신규 학생 등록</a> <span>50초 · 새 학생이 등록했을 때</span></li>
+      <li class="wordtest"><a href="#wordtest">단어시험 운영</a> <span>1분 3초 · 매일 시험 시간</span></li>
     </ol>
   </nav>
 
@@ -46,7 +46,7 @@
 
   </article>
 
-  <article class="card" id="newstudent">
+  <article class="card wordtest" id="newstudent">
     <span class="num">영상 2</span>
     <h2>신규 학생 등록</h2>
     <p class="when">새 학생이 등록해서 단어시험 명단에 올려야 할 때</p>
@@ -65,7 +65,7 @@
     </div>
   </article>
 
-  <article class="card" id="wordtest">
+  <article class="card wordtest" id="wordtest">
     <span class="num">영상 3</span>
     <h2>단어시험 운영</h2>
     <p class="when">매일 시험 시간: 시험지 출력 → 채점 → 성적 입력</p>
@@ -84,6 +84,17 @@
     </div>
   </article>
 </main>
+<script>
+/* 단어시험 — 2026-11-15 원장님 요청으로 임시로 꺼 둠.
+   「신규 학생 등록」 영상도 단어시험 페이지에서 하는 방법이라 같이 껐다
+   (이매 신규 등록은 유승리 관리자 화면에서 한다).
+   다시 켜려면 true 로만 바꾸면 된다. */
+const WORDTEST_ON = false;
+if (!WORDTEST_ON) {
+  document.querySelectorAll('.wordtest').forEach(e => e.remove());
+  document.getElementById('vcount').textContent = '이 영상을';
+}
+</script>
 <footer>학생 · 학부모용 안내는 <a href="/guide/">victoryzone.co.kr/guide</a></footer>
 </body>
 </html>

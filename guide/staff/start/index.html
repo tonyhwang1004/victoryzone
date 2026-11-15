@@ -42,7 +42,7 @@
     <h2>원장님께 받을 것</h2>
     <p class="when">받은 것은 체크하세요. 셋 다 받아야 업무를 할 수 있어요.</p>
     <ul class="checks">
-      <li><label><input type="checkbox" data-k="get_pw"> <b>직원 비밀번호</b> — 단어시험 출력 · 성적 입력 · 신규 등록에 써요 (어디에도 적어 두지 마세요)</label></li>
+      <li><label><input type="checkbox" data-k="get_pw"> <b>직원 비밀번호</b> — 직원 업무 화면에 써요 (어디에도 적어 두지 마세요)</label></li>
       <li><label><input type="checkbox" data-k="get_sheet"> <b>대기신청 시트 공유</b> — 1단계에 적은 구글 메일로 받아요</label></li>
       <li><label><input type="checkbox" data-k="get_shift"> <b>근무 일정 · 데스크 위치 · 비상 연락처</b></label></li>
     </ul>
@@ -51,24 +51,24 @@
   <!-- 3. 영상 -->
   <article class="card step-card" id="s3">
     <span class="num">3단계</span>
-    <h2>업무 영상 3개 보기</h2>
+    <h2>업무 영상 <span id="vcount">3개</span> 보기</h2>
     <p class="when">끝까지 보면 자동으로 체크돼요. 자세한 순서는 <a href="/guide/staff/">직원 업무 영상</a> 페이지에 있어요.</p>
     <div class="vid">
       <label class="vh"><input type="checkbox" data-k="v_apply"> ① 대기신청 처리 <span>1분 12초</span></label>
       <video controls playsinline preload="metadata" poster="/guide/videos/staff-apply.jpg" data-k="v_apply"><source src="/guide/videos/staff-apply.mp4" type="video/mp4"></video>
     </div>
-    <div class="vid">
+    <div class="vid wordtest">
       <label class="vh"><input type="checkbox" data-k="v_new"> ② 신규 학생 등록 <span>50초</span></label>
       <video controls playsinline preload="metadata" poster="/guide/videos/staff-newstudent.jpg" data-k="v_new"><source src="/guide/videos/staff-newstudent.mp4" type="video/mp4"></video>
     </div>
-    <div class="vid">
+    <div class="vid wordtest">
       <label class="vh"><input type="checkbox" data-k="v_test"> ③ 단어시험 운영 <span>1분 3초</span></label>
       <video controls playsinline preload="metadata" poster="/guide/videos/staff-wordtest.jpg" data-k="v_test"><source src="/guide/videos/staff-wordtest.mp4" type="video/mp4"></video>
     </div>
   </article>
 
   <!-- 4. 실습 -->
-  <article class="card step-card" id="s4">
+  <article class="card step-card wordtest" id="s4">
     <span class="num">4단계</span>
     <h2>실습 — 연습용 학생으로 해 보기</h2>
     <p class="when">실제 학생 기록은 건드리지 않고, 연습용 계정으로만 해 보세요.</p>
@@ -93,7 +93,7 @@
 
   <div class="note">앞으로는 일이 헷갈릴 때 <a href="/guide/staff/"><b>직원 업무 영상</b></a>에서 해당 영상만 다시 보면 돼요. 학생 · 학부모님께 안내할 땐 <a href="/guide/"><b>victoryzone.co.kr/guide</b></a> 링크를 보내 주세요.</div>
 </main>
-<footer>© 2026 승리자리 관리형 학습센터 · <a href="/guide/staff/">직원 업무 영상</a></footer>
+<footer>© 2026 승리자리 관리형 스터디센터 · <a href="/guide/staff/">직원 업무 영상</a></footer>
 
 <script>
 // 신규 직원 가입·완료 보고 → 대기신청 Apps Script 웹 앱 (원장님께 문자·메일)
@@ -106,6 +106,14 @@ try { st = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (_) {}
 const save = () => { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (_) {} };
 
 const STEPS = { s1: ['joined'], s2: ['get_pw', 'get_sheet', 'get_shift'], s3: ['v_apply', 'v_new', 'v_test'], s4: ['p_login', 'p_test', 'p_print'], s5: ['reported'] };
+/* 단어시험 — 2026-11-15 원장님 요청으로 임시로 꺼 둠. 신규 학생 등록 영상·단어시험 영상·4단계 실습이
+   모두 단어시험 페이지 기준이라 같이 숨긴다. 다시 켜려면 true 로만 바꾸면 된다. */
+const WORDTEST_ON = false;
+if (!WORDTEST_ON) {
+  document.querySelectorAll('.wordtest').forEach(e => { e.hidden = true; });
+  STEPS.s3 = ['v_apply']; STEPS.s4 = [];
+  document.getElementById('vcount').textContent = '';
+}
 
 function render() {
   document.querySelectorAll('input[type=checkbox][data-k]').forEach(c => { c.checked = !!st[c.dataset.k]; });
