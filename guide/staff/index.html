@@ -1,100 +1,138 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex, nofollow"><!-- 직원 안내용: 검색에 노출하지 않음 -->
-<title>직원 업무 영상 | 승리자리 관리형 스터디센터</title>
-<meta name="theme-color" content="#11183C">
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>직원 교육 | 승리자리</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<link rel="stylesheet" href="/guide/guide.css">
-</head>
-<body>
-<header><a href="/">승리자리 <small>관리형 스터디센터</small></a></header>
+<style>
+:root{--navy:#11183C;--navy2:#24365f;--coral:#F24A69;--ink:#1f2937;--mut:#6b7280;--line:#e8ebf0;--ok:#16a34a}
+*{box-sizing:border-box} body{margin:0;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;color:var(--ink);background:#f4f6fa}
+header{background:var(--navy);color:#fff;padding:13px 18px;font-weight:800} header small{font-weight:500;opacity:.8}
+.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:30px 18px}
+.hero .in{max-width:900px;margin:0 auto}
+.eyebrow{display:inline-block;background:rgba(255,255,255,.14);padding:5px 11px;border-radius:999px;font-size:13px;font-weight:700;margin:0 0 10px}
+.hero h1{margin:.1em 0;font-size:26px;line-height:1.3} .hero p{margin:.4em 0 0;opacity:.85;font-size:15px}
+.wrap{max-width:900px;margin:0 auto;padding:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;margin:0 0 18px;box-shadow:0 2px 12px rgba(17,24,60,.05)}
+.num{display:inline-block;background:#eef1f8;color:var(--navy);font-weight:800;font-size:12.5px;padding:4px 10px;border-radius:999px}
+.card h2{margin:.35em 0 .3em;font-size:21px} .when{color:var(--mut);margin:0 0 14px;font-size:14px}
+video{width:100%;max-width:620px;display:block;margin:0 auto 14px;border-radius:14px;background:#000}
+ol.steps{margin:0;padding-left:20px;color:#374151;font-size:14.5px;line-height:1.7} ol.steps b{color:var(--navy)}
+.toc{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 20px;margin:0 0 18px}
+.toc b{font-size:14px;color:var(--mut)} .toc ol{margin:8px 0 0;padding-left:20px;line-height:2} .toc a{color:var(--ink);text-decoration:none;font-weight:600} .toc span{color:var(--mut);font-size:13px}
+.progress{display:flex;align-items:center;gap:10px;margin:4px 0 0} .bar{flex:1;height:8px;background:#eef1f8;border-radius:999px;overflow:hidden} .bar i{display:block;height:100%;background:var(--coral);width:0;transition:.3s} .ptext{font-size:13px;color:var(--mut);font-weight:700}
+.quiz h2 .mini{font-size:15px;color:var(--mut);font-weight:600}
+.q{padding:16px 0;border-top:1px solid var(--line)} .q:first-of-type{border-top:0}
+.q .t{font-weight:700;margin:0 0 10px}
+label.opt{display:flex;align-items:center;gap:10px;padding:11px 13px;border:1.5px solid var(--line);border-radius:11px;margin:7px 0;cursor:pointer;transition:.15s}
+label.opt:hover{border-color:#c7cdd6} label.opt input{accent-color:var(--coral);width:18px;height:18px}
+.q.correct label.sel{border-color:var(--ok);background:#f0fdf4} .q.wrong label.sel{border-color:var(--coral);background:#fef2f2}
+.q .sol{display:none;margin:8px 2px 0;font-size:13.5px;color:#374151} .q.done .sol{display:block}
+.btn{display:block;width:100%;padding:15px;border:0;border-radius:12px;background:var(--navy);color:#fff;font-size:17px;font-weight:800;cursor:pointer}
+.result{display:none;margin:14px 0 0;padding:16px;border-radius:12px;text-align:center;font-weight:800;font-size:18px}
+.result.pass{display:block;background:#f0fdf4;color:var(--ok);border:1.5px solid #bbf7d0}
+.result.fail{display:block;background:#fef2f2;color:var(--coral);border:1.5px solid #fecaca}
+.hint{text-align:center;color:var(--mut);font-size:13px;margin:8px 0 0}
+footer{text-align:center;color:var(--mut);font-size:13px;padding:24px}
+</style></head><body>
+<header>승리자리 <small>관리형 스터디센터 · 직원 교육</small></header>
 <section class="hero"><div class="in">
-  <span class="eyebrow">직원용</span>
-  <h1>직원 업무 영상</h1>
-  <p>처음 오신 분은 <span id="vcount">세 개를</span> 순서대로 보고, 그다음부터는 필요할 때 해당 영상만 다시 보세요.</p>
+  <span class="eyebrow">선생님 안내</span>
+  <h1>처음 오셨나요?<br>영상 다섯 개면 하루가 돌아갑니다</h1>
+  <p>각 1분 안팎 · 소리 없이 자막만 보셔도 따라 할 수 있어요. 다 보고 마지막 확인 문제 3개를 모두 맞히면 교육 완료입니다.</p>
 </div></section>
-<main>
-  <div class="start-banner"><span>처음 오셨나요? 가입부터 교육 완료까지 한 페이지에서</span><a href="/guide/staff/start/">신규 직원 시작하기 →</a></div>
+<div class="wrap">
 
-  <nav class="toc">
+  <div class="toc">
     <b>영상 목록</b>
     <ol>
-      <li><a href="#apply">대기신청 처리</a> <span>1분 12초 · 홈페이지로 신청이 들어왔을 때</span></li>
-      <li class="wordtest"><a href="#newstudent">신규 학생 등록</a> <span>50초 · 새 학생이 등록했을 때</span></li>
-      <li class="wordtest"><a href="#wordtest">단어시험 운영</a> <span>1분 3초 · 매일 시험 시간</span></li>
+      <li><a href="#v1">로그인과 비밀번호</a> <span>처음 들어올 때</span></li>
+      <li><a href="#v2">좌석표</a> <span>자리 배치·재실</span></li>
+      <li><a href="#v3">정기일정 승인</a> <span>출결 기준 만들기</span></li>
+      <li><a href="#v4">오늘 출결 판정</a> <span>지각·결석 가리기</span></li>
+      <li><a href="#v5">벌점 — 검수와 부여</a> <span>점수·카톡</span></li>
     </ol>
-  </nav>
+    <div class="progress"><div class="bar"><i id="pbar"></i></div><span class="ptext" id="ptext">0 / 5 영상</span></div>
+  </div>
 
-  <div class="note">직원 비밀번호는 영상에 나오지 않아요. 원장님께 따로 받으세요.</div>
+  <article class="card" id="v1"><span class="num">영상 1</span>
+    <h2>로그인과 비밀번호</h2><p class="when">관리시스템에 처음 들어올 때.</p>
+    <video controls playsinline preload="metadata" data-k="v1"><source src="/guide/videos/staff-login.mp4" type="video/mp4"></video>
+    <ol class="steps"><li>아이디는 <b>내 휴대폰 번호</b>, 첫 비밀번호는 데스크에서 받은 번호</li>
+    <li>처음 들어오면 <b>본인만 아는 번호로 바로 바꾸기</b> (안 바꾸면 남이 내 이름으로 들어올 수 있어요)</li></ol></article>
 
-  <article class="card" id="apply">
-    <span class="num">영상 1</span>
-    <h2>대기신청 처리</h2>
-    <p class="when">홈페이지로 새 대기신청 알림(문자 · 메일)이 왔을 때</p>
-    <video controls playsinline preload="metadata" poster="/guide/videos/staff-apply.jpg">
-      <source src="/guide/videos/staff-apply.mp4" type="video/mp4">
-    </video>
-    <ol class="steps">
-      <li>알림 메일에서 학생 정보와 <b>학부모 연락처</b> 확인</li>
-      <li>학부모님께 연락해 상담 일정 잡기</li>
-      <li>메일 맨 아래 링크로 「승리자리 이매점 대기신청」 시트 열기</li>
-      <li>처리상태 바꾸기 (예: 신규 → 연락완료 → 상담예약 → 등록) · 메모에 통화 내용 적기</li>
-    </ol>
+  <article class="card" id="v2"><span class="num">영상 2</span>
+    <h2>좌석표</h2><p class="when">지금 누가 어디 앉아 있는지.</p>
+    <video controls playsinline preload="metadata" data-k="v2"><source src="/guide/videos/staff-seat.mp4" type="video/mp4"></video>
+    <ol class="steps"><li>이름 색으로 <b>재실·나감</b> 확인 · 구역별 <b>지정석/자유석/프리미엄</b></li>
+    <li>자리 이동은 <b>빈자리만</b> 고를 수 있어 겹치지 않아요</li></ol></article>
 
+  <article class="card" id="v3"><span class="num">영상 3</span>
+    <h2>정기일정 승인</h2><p class="when">그 달 출결 기준을 만드는 일.</p>
+    <video controls playsinline preload="metadata" data-k="v3"><source src="/guide/videos/staff-regular.mp4" type="video/mp4"></video>
+    <ol class="steps"><li>학생이 낸 요일·시간을 확인 → <b>체크 → 승인</b></li>
+    <li><b>승인한 일정만</b> 출결 기준이 되고 학부모께 카톡이 가요</li></ol></article>
+
+  <article class="card" id="v4"><span class="num">영상 4</span>
+    <h2>오늘 출결 판정</h2><p class="when">하루 한 번, 지각·결석 가리기.</p>
+    <video controls playsinline preload="metadata" data-k="v4"><source src="/guide/videos/staff-judge.mp4" type="video/mp4"></video>
+    <ol class="steps"><li><b>정기일정 ↔ 실제 출입</b>을 자동 대조해서 보여줘요</li>
+    <li>사유 낸 학생은 <b>자동 제외</b> · 표의 숫자는 <b>아직 벌점이 아니에요</b> (보고 판단)</li></ol></article>
+
+  <article class="card" id="v5"><span class="num">영상 5</span>
+    <h2>벌점 — 검수와 부여</h2><p class="when">점수를 실제로 주는 마지막 단계.</p>
+    <video controls playsinline preload="metadata" data-k="v5"><source src="/guide/videos/staff-penalty.mp4" type="video/mp4"></video>
+    <ol class="steps"><li><b>검수 전 → 검수(내용 확인) → 부여</b> 세 단계</li>
+    <li><b>「부여」를 눌러야</b> 점수가 오르고 학부모께 카톡이 가요 (검수만으론 안 올라가요)</li></ol></article>
+
+  <article class="card quiz" id="quiz">
+    <h2>확인 문제 <span class="mini">· 3문제 모두 맞히면 교육 완료</span></h2>
+    <p class="when">영상을 다 보고 풀어보세요. 틀리면 다시 보고 풀면 됩니다.</p>
+
+    <div class="q" data-a="1"><div class="t">1. 벌점을 <b>실제로</b> 주려면(점수 반영 + 학부모 카톡) 어떻게 하나요?</div>
+      <label class="opt"><input type="radio" name="q1" value="0">「검수」만 누르면 된다</label>
+      <label class="opt"><input type="radio" name="q1" value="1">「검수」 후 <b>「부여」</b>까지 눌러야 한다</label>
+      <label class="opt"><input type="radio" name="q1" value="2">아무것도 안 해도 자동으로 올라간다</label>
+      <div class="sol">✔ 검수 전 → 검수 → 「부여」. 「부여」를 눌러야 점수가 오르고 학부모께 카톡이 갑니다. 그 전에는 아무 일도 안 일어나요.</div></div>
+
+    <div class="q" data-a="1"><div class="t">2. 학생이 <b>지각·결석 사유</b>를 내고 승인되면?</div>
+      <label class="opt"><input type="radio" name="q2" value="0">그래도 벌점을 준다</label>
+      <label class="opt"><input type="radio" name="q2" value="1">그 학생은 <b>벌점에서 자동으로 빠진다</b></label>
+      <label class="opt"><input type="radio" name="q2" value="2">사유는 아무 소용이 없다</label>
+      <div class="sol">✔ 사유를 확인하고 승인하면 그 학생은 출결 판정에서 자동으로 제외됩니다. 표의 숫자는 아직 벌점이 아니에요.</div></div>
+
+    <div class="q" data-a="1"><div class="t">3. 관리시스템에 <b>처음 로그인</b>한 뒤 가장 먼저 할 일은?</div>
+      <label class="opt"><input type="radio" name="q3" value="0">받은 비밀번호를 그대로 계속 쓴다</label>
+      <label class="opt"><input type="radio" name="q3" value="1">본인만 아는 번호로 <b>비밀번호를 바꾼다</b></label>
+      <label class="opt"><input type="radio" name="q3" value="2">아이디(휴대폰 번호)를 바꾼다</label>
+      <div class="sol">✔ 받은 번호를 그대로 두면 남이 내 이름으로 들어올 수 있어요. 처음 들어오면 본인만 아는 번호로 바로 바꿉니다.</div></div>
+
+    <button class="btn" id="submit">채점하기</button>
+    <div class="result" id="res"></div>
+    <p class="hint" id="hint"></p>
   </article>
-
-  <article class="card wordtest" id="newstudent">
-    <span class="num">영상 2</span>
-    <h2>신규 학생 등록</h2>
-    <p class="when">새 학생이 등록해서 단어시험 명단에 올려야 할 때</p>
-    <video controls playsinline preload="metadata" poster="/guide/videos/staff-newstudent.jpg">
-      <source src="/guide/videos/staff-newstudent.mp4" type="video/mp4">
-    </video>
-    <ol class="steps">
-      <li>단어시험 페이지 맨 아래 <b>「🆕 직원: 신규 학생 등록」</b></li>
-      <li>직원 비밀번호로 인증</li>
-      <li>이름 · 학부모 전화번호 · 자리번호 입력 → <b>「✅ 신규 학생 등록」</b></li>
-      <li>화면에 나온 <b>이름 · 학부모 뒷자리 4개</b>를 학생에게 알려 주기</li>
-      <li><b>YOU승리 앱 가입</b> 안내하기 — 가입하고 처음 들어가면 안내 영상이 첫 화면에 떠서 따로 설명하지 않아도 돼요</li>
-    </ol>
-    <div class="btns">
-      <a class="go" href="/wordtest/">단어시험 페이지 열기 →</a>
-    </div>
-  </article>
-
-  <article class="card wordtest" id="wordtest">
-    <span class="num">영상 3</span>
-    <h2>단어시험 운영</h2>
-    <p class="when">매일 시험 시간: 시험지 출력 → 채점 → 성적 입력</p>
-    <video controls playsinline preload="metadata" poster="/guide/videos/staff-wordtest.jpg">
-      <source src="/guide/videos/staff-wordtest.mp4" type="video/mp4">
-    </video>
-    <ol class="steps">
-      <li><b>「🖨️ 직원: 오늘 시험지 일괄 출력」</b> → 결석생 체크 해제 → 시험지 생성 → 인쇄</li>
-      <li>시험을 보고 함께 출력된 정답표로 채점</li>
-      <li><b>「📝 직원: 오늘 시험결과 입력」</b> → 학생마다 <b>틀린 번호만</b> 입력 (만점은 스페이스 한 번)</li>
-      <li><b>「💾 일괄 저장」</b> → 학생 오답노트와 성적 기록에 자동 반영</li>
-    </ol>
-    <div class="btns">
-      <a class="go" href="/wordtest/">시험지 출력 (단어시험 페이지) →</a>
-      <a class="sub" href="/gradeinput/">성적 일괄 입력 →</a>
-    </div>
-  </article>
-</main>
+</div>
+<footer>© 2026 승리자리 관리형 스터디센터</footer>
 <script>
-/* 단어시험 — 2026-11-15 원장님 요청으로 임시로 꺼 둠.
-   「신규 학생 등록」 영상도 단어시험 페이지에서 하는 방법이라 같이 껐다
-   (이매 신규 등록은 유승리 관리자 화면에서 한다).
-   다시 켜려면 true 로만 바꾸면 된다. */
-const WORDTEST_ON = false;
-if (!WORDTEST_ON) {
-  document.querySelectorAll('.wordtest').forEach(e => e.remove());
-  document.getElementById('vcount').textContent = '이 영상을';
-}
-</script>
-<footer>학생 · 학부모용 안내는 <a href="/guide/">victoryzone.co.kr/guide</a></footer>
-</body>
-</html>
+const KEY='vz_staff_hub'; let st={}; try{st=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){}
+const vids=[...document.querySelectorAll('video[data-k]')];
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+function render(){const n=vids.filter(v=>st[v.dataset.k]).length;
+  document.getElementById('pbar').style.width=(n/vids.length*100)+'%';
+  document.getElementById('ptext').textContent=(n===vids.length?'영상 다 봤어요 🎉':n+' / '+vids.length+' 영상');}
+vids.forEach(v=>v.addEventListener('ended',()=>{st[v.dataset.k]=1;save();render();}));
+render();
+const qs=[...document.querySelectorAll('.q')];
+document.getElementById('submit').onclick=function(){
+  let ok=0,answered=0;
+  qs.forEach(q=>{const a=+q.dataset.a,p=q.querySelector('input:checked');
+    q.classList.remove('correct','wrong');q.classList.add('done');
+    q.querySelectorAll('label').forEach(l=>l.classList.remove('sel'));
+    if(p){answered++;p.closest('label').classList.add('sel');if(+p.value===a){ok++;q.classList.add('correct')}else q.classList.add('wrong')}});
+  const res=document.getElementById('res'),hint=document.getElementById('hint');
+  if(answered<qs.length){res.className='result fail';res.textContent='아직 안 고른 문제가 있어요';hint.textContent='';return;}
+  if(ok===qs.length){res.className='result pass';res.textContent='✅ 통과! 직원 교육 완료로 기록됩니다 ('+ok+'/'+qs.length+')';
+    hint.textContent='수고하셨습니다! 이제 관리시스템을 바로 쓰실 수 있어요.';st.quiz=1;save();}
+  else{res.className='result fail';res.textContent='아쉬워요 — '+ok+'/'+qs.length+' · 영상을 다시 보고 풀어보세요';
+    hint.textContent='틀린 문제 아래에 정답 풀이가 있어요.';}
+};
+</script></body></html>

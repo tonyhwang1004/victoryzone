@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>학부모 안내 | 승리자리</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{--navy:#11183C;--navy2:#24365f;--coral:#F24A69;--ink:#1f2937;--mut:#6b7280;--line:#e8ebf0;--ok:#16a34a}
+*{box-sizing:border-box} body{margin:0;font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;color:var(--ink);background:#f4f6fa}
+header{background:var(--navy);color:#fff;padding:13px 18px;font-weight:800} header small{font-weight:500;opacity:.8}
+.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:30px 18px}
+.hero .in{max-width:820px;margin:0 auto}
+.eyebrow{display:inline-block;background:rgba(255,255,255,.14);padding:5px 11px;border-radius:999px;font-size:13px;font-weight:700;margin:0 0 10px}
+.hero h1{margin:.1em 0;font-size:26px;line-height:1.3} .hero p{margin:.4em 0 0;opacity:.85;font-size:15px}
+.wrap{max-width:820px;margin:0 auto;padding:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;margin:0 0 18px;box-shadow:0 2px 12px rgba(17,24,60,.05)}
+.card h2{margin:.15em 0 .3em;font-size:21px} .when{color:var(--mut);margin:0 0 14px;font-size:14px}
+video{width:100%;max-width:330px;display:block;margin:0 auto 14px;border-radius:14px;background:#000}
+ol.steps{margin:0;padding-left:20px;color:#374151;font-size:14.5px;line-height:1.7} ol.steps b{color:var(--navy)}
+.progress{display:flex;align-items:center;gap:10px;margin:4px 0 0} .bar{flex:1;height:8px;background:#eef1f8;border-radius:999px;overflow:hidden} .bar i{display:block;height:100%;background:var(--coral);width:0;transition:.3s} .ptext{font-size:13px;color:var(--mut);font-weight:700}
+.quiz h2 .mini{font-size:15px;color:var(--mut);font-weight:600}
+.q{padding:16px 0;border-top:1px solid var(--line)} .q:first-of-type{border-top:0}
+.q .t{font-weight:700;margin:0 0 10px}
+label.opt{display:flex;align-items:center;gap:10px;padding:11px 13px;border:1.5px solid var(--line);border-radius:11px;margin:7px 0;cursor:pointer;transition:.15s}
+label.opt:hover{border-color:#c7cdd6} label.opt input{accent-color:var(--coral);width:18px;height:18px}
+.q.correct label.sel{border-color:var(--ok);background:#f0fdf4} .q.wrong label.sel{border-color:var(--coral);background:#fef2f2}
+.q .sol{display:none;margin:8px 2px 0;font-size:13.5px;color:#374151} .q.done .sol{display:block}
+.btn{display:block;width:100%;padding:15px;border:0;border-radius:12px;background:var(--navy);color:#fff;font-size:17px;font-weight:800;cursor:pointer}
+.result{display:none;margin:14px 0 0;padding:16px;border-radius:12px;text-align:center;font-weight:800;font-size:18px}
+.result.pass{display:block;background:#f0fdf4;color:var(--ok);border:1.5px solid #bbf7d0}
+.result.fail{display:block;background:#fef2f2;color:var(--coral);border:1.5px solid #fecaca}
+.hint{text-align:center;color:var(--mut);font-size:13px;margin:8px 0 0}
+footer{text-align:center;color:var(--mut);font-size:13px;padding:24px}
+</style></head><body>
+<header>승리자리 <small>관리형 스터디센터</small></header>
+<section class="hero"><div class="in">
+  <span class="eyebrow">학부모 안내</span>
+  <h1>자녀의 하루,<br>한 곳에서 보세요</h1>
+  <p>영상 한 편(1분 미만) · 소리 없이 자막만 보셔도 따라 하실 수 있어요. 끝까지 보고 확인 문제까지 풀면 끝!</p>
+</div></section>
+<div class="wrap">
+
+  <article class="card" id="v">
+    <h2>유승리 학부모 포털</h2>
+    <p class="when">학부모 코드로 로그인해서, 자녀의 출결·공부·벌점을 한눈에.</p>
+    <video controls playsinline preload="metadata" data-k="v1"><source src="/guide/videos/parent-app.mp4" type="video/mp4"></video>
+    <ol class="steps">
+      <li><b>학부모 코드</b>로 로그인 (코드는 스터디센터에서 받으세요)</li>
+      <li><b>주간 리포트</b> — 나온 날 · 머문 시간 · 성적 변화 · 채워야 할 과목</li>
+      <li><b>출결 현황 · 벌점</b> 확인</li>
+      <li><b>사유 승인</b> — 자녀가 낸 지각·결석 사유를 승인하면 벌점 면제</li>
+      <li>등·하원은 <b>카카오톡</b>으로도 바로 알림</li>
+    </ol>
+    <div class="progress"><div class="bar"><i id="pbar"></i></div><span class="ptext" id="ptext">영상 보기 전</span></div>
+  </article>
+
+  <article class="card quiz" id="quiz">
+    <h2>확인 문제 <span class="mini">· 3문제 다 맞히면 통과</span></h2>
+    <p class="when">영상을 보고 풀어보세요. 틀리면 다시 보고 풀면 돼요.</p>
+
+    <div class="q" data-a="0"><div class="t">1. <b>주간 리포트</b>에서 확인할 수 있는 것은?</div>
+      <label class="opt"><input type="radio" name="q1" value="0">자녀의 <b>나온 날 · 머문 시간 · 성적 변화</b></label>
+      <label class="opt"><input type="radio" name="q1" value="1">다른 학생의 정보</label>
+      <label class="opt"><input type="radio" name="q1" value="2">아무것도 안 보인다</label>
+      <div class="sol">✔ 주간 리포트에 이번 주 나온 날·머문 시간·성적 변화·채워야 할 과목이 한 장에 정리돼요.</div></div>
+
+    <div class="q" data-a="1"><div class="t">2. 자녀가 낸 <b>지각·결석 사유</b>는 어떻게 처리하나요?</div>
+      <label class="opt"><input type="radio" name="q2" value="0">그냥 둔다</label>
+      <label class="opt"><input type="radio" name="q2" value="1"><b>「사유 승인」</b>에서 승인하면 벌점이 면제된다</label>
+      <label class="opt"><input type="radio" name="q2" value="2">전화로만 가능하다</label>
+      <div class="sol">✔ 「사유 승인」에서 자녀가 낸 사유를 승인하면(사감 확인까지 끝나면) 그날 벌점이 면제돼요.</div></div>
+
+    <div class="q" data-a="1"><div class="t">3. 자녀의 <b>등·하원 알림</b>은 어디로 오나요?</div>
+      <label class="opt"><input type="radio" name="q3" value="0">이메일</label>
+      <label class="opt"><input type="radio" name="q3" value="1"><b>카카오톡</b></label>
+      <label class="opt"><input type="radio" name="q3" value="2">알림이 안 온다</label>
+      <div class="sol">✔ 자녀가 등원·하원하면 카카오톡으로 바로 알림이 와요.</div></div>
+
+    <button class="btn" id="submit">채점하기</button>
+    <div class="result" id="res"></div>
+    <p class="hint" id="hint"></p>
+  </article>
+</div>
+<footer>© 2026 승리자리 관리형 스터디센터</footer>
+<script>
+const KEY='vz_par_hub'; let st={}; try{st=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){}
+const v=document.querySelector('video[data-k]');
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+function render(){const done=!!st.v1;document.getElementById('pbar').style.width=(done?100:0)+'%';
+  document.getElementById('ptext').textContent=done?'영상 다 봤어요 🎉':'영상 보기 전';}
+v.addEventListener('ended',()=>{st.v1=1;save();render();});render();
+const qs=[...document.querySelectorAll('.q')];
+document.getElementById('submit').onclick=function(){
+  let ok=0,answered=0;
+  qs.forEach(q=>{const a=+q.dataset.a,p=q.querySelector('input:checked');
+    q.classList.remove('correct','wrong');q.classList.add('done');
+    q.querySelectorAll('label').forEach(l=>l.classList.remove('sel'));
+    if(p){answered++;p.closest('label').classList.add('sel');if(+p.value===a){ok++;q.classList.add('correct')}else q.classList.add('wrong')}});
+  const res=document.getElementById('res'),hint=document.getElementById('hint');
+  if(answered<qs.length){res.className='result fail';res.textContent='아직 안 고른 문제가 있어요';hint.textContent='';return;}
+  if(ok===qs.length){res.className='result pass';res.textContent='✅ 통과! 확인 완료로 기록됩니다 ('+ok+'/'+qs.length+')';
+    hint.textContent='감사합니다! 이제 학부모 포털을 바로 쓰실 수 있어요.';st.quiz=1;save();}
+  else{res.className='result fail';res.textContent='아쉬워요 — '+ok+'/'+qs.length+' · 영상을 다시 보고 풀어보세요';
+    hint.textContent='틀린 문제 아래에 정답 풀이가 있어요.';}
+};
+</script></body></html>
