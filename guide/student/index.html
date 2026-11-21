@@ -37,7 +37,7 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:24px}
 <header>승리자리 <small>관리형 스터디센터</small></header>
 <section class="hero"><div class="in">
   <span class="eyebrow">재원생 안내</span>
-  <h1>처음 오셨나요?<br>영상 세 개면 충분해요</h1>
+  <h1>처음 오셨나요?<br>영상 여섯 개면 충분해요</h1>
   <p>각 1분 안팎 · 소리 없이 자막만 보셔도 따라 할 수 있어요. 다 보고 마지막 확인 문제까지 풀면 끝!</p>
 </div></section>
 <div class="wrap">
@@ -46,10 +46,13 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:24px}
     <b>영상 목록</b>
     <ol>
       <li><a href="#v1">유승리 앱 시작하기</a> <span>32초</span></li>
-      <li><a href="#v2">사유 제출</a> <span>23초</span></li>
-      <li><a href="#v3">선생님과 메시지</a> <span>15초</span></li>
+      <li><a href="#v2">정기일정 제출</a> <span>41초</span></li>
+      <li><a href="#v3">사유 제출</a> <span>23초</span></li>
+      <li><a href="#v4">출석 · 벌점 · 상점 확인</a> <span>23초</span></li>
+      <li><a href="#v5">선생님과 메시지</a> <span>15초</span></li>
+      <li><a href="#v6">방화벽 해제 신청</a> <span>29초</span></li>
     </ol>
-    <div class="progress"><div class="bar"><i id="pbar"></i></div><span class="ptext" id="ptext">0 / 3 영상</span></div>
+    <div class="progress"><div class="bar"><i id="pbar"></i></div><span class="ptext" id="ptext">0 / 6 영상</span></div>
   </div>
 
   <article class="card" id="v1"><span class="num">영상 1</span>
@@ -59,18 +62,36 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:24px}
     <li>홈에서 오늘 <b>입실 시간 · 공부 시간 · 공지</b> 확인</li></ol></article>
 
   <article class="card" id="v2"><span class="num">영상 2</span>
+    <h2>정기일정 제출</h2><p class="when">매달 올 요일·시간을 미리 내요. <b>안 내면 매일 벌점!</b></p>
+    <video controls playsinline preload="metadata" data-k="v2"><source src="/guide/videos/student-schedule.mp4" type="video/mp4"></video>
+    <ol class="steps"><li>생활 → <b>정기일정</b>에서 요일 칸에 <b>시간 · 등원 · 하원 · 외출</b>을 글로 적기</li>
+    <li><b>「정기일정 제출」</b> → 사감·학부모 승인 뒤 그 달 출결 기준이 돼요</li></ol></article>
+
+  <article class="card" id="v3"><span class="num">영상 3</span>
     <h2>사유 제출</h2><p class="when">늦거나 빠지게 될 때.</p>
-    <video controls playsinline preload="metadata" data-k="v2"><source src="/guide/videos/student-reason.mp4" type="video/mp4"></video>
+    <video controls playsinline preload="metadata" data-k="v3"><source src="/guide/videos/student-reason.mp4" type="video/mp4"></video>
     <ol class="steps"><li>늦음 · 결석 · 외출을 <b>미리 제출</b></li>
     <li><b>사감 확인 + 부모님 승인</b> → 그날 벌점이 없어져요</li></ol></article>
 
-  <article class="card" id="v3"><span class="num">영상 3</span>
+  <article class="card" id="v4"><span class="num">영상 4</span>
+    <h2>출석 · 벌점 · 상점 확인</h2><p class="when">내 기록을 한눈에.</p>
+    <video controls playsinline preload="metadata" data-k="v4"><source src="/guide/videos/student-attend.mp4" type="video/mp4"></video>
+    <ol class="steps"><li>홈 위쪽에서 <b>오늘 입실 · 상점 · 벌점</b> 바로 확인</li>
+    <li><b>「출결」</b> 달력에서 며칠 왔고 몇 시에 들어오고 나갔는지 자세히 (부모님도 같은 내용)</li></ol></article>
+
+  <article class="card" id="v5"><span class="num">영상 5</span>
     <h2>선생님과 메시지</h2><p class="when">선생님께 연락할 때.</p>
-    <video controls playsinline preload="metadata" data-k="v3"><source src="/guide/videos/student-msg.mp4" type="video/mp4"></video>
+    <video controls playsinline preload="metadata" data-k="v5"><source src="/guide/videos/student-msg.mp4" type="video/mp4"></video>
     <ol class="steps"><li>홈에서 <b>「메세지」</b> → 선생님과 주고받아요 (기록이 남아요)</li></ol></article>
 
+  <article class="card" id="v6"><span class="num">영상 6</span>
+    <h2>방화벽 해제 신청</h2><p class="when">공부에 필요한 사이트를 열고 싶을 때.</p>
+    <video controls playsinline preload="metadata" data-k="v6"><source src="/guide/videos/student-firewall.mp4" type="video/mp4"></video>
+    <ol class="steps"><li>생활 → <b>방화벽 해제</b>에서 <b>사이트 · 이유 · 시간</b> 적어 요청</li>
+    <li><b>부모님이 승인</b>하면 그 시간만큼 인터넷이 열려요</li></ol></article>
+
   <article class="card quiz" id="quiz">
-    <h2>확인 문제 <span class="mini">· 3문제 다 맞히면 통과</span></h2>
+    <h2>확인 문제 <span class="mini">· 모두 맞히면 통과</span></h2>
     <p class="when">영상을 다 보고 풀어보세요. 틀리면 다시 보고 풀면 돼요.</p>
 
     <div class="q" data-a="1"><div class="t">1. 유승리 앱에 <b>처음 로그인</b>할 때 필요한 것은?</div>
@@ -79,17 +100,29 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:24px}
       <label class="opt"><input type="radio" name="q1" value="2">아무 비밀번호나 넣는다</label>
       <div class="sol">✔ 휴대폰 번호와 데스크에서 받은 6자리 코드로 로그인 → 새 비밀번호를 정합니다.</div></div>
 
-    <div class="q" data-a="1"><div class="t">2. <b>늦거나 빠지게</b> 될 때는?</div>
-      <label class="opt"><input type="radio" name="q2" value="0">그냥 안 간다</label>
-      <label class="opt"><input type="radio" name="q2" value="1">앱에서 <b>「사유 제출」</b>로 미리 알린다</label>
-      <label class="opt"><input type="radio" name="q2" value="2">아무에게도 말하지 않는다</label>
+    <div class="q" data-a="1"><div class="t">2. <b>정기일정</b>은 어떻게 하나요?</div>
+      <label class="opt"><input type="radio" name="q2" value="0">안 내도 된다</label>
+      <label class="opt"><input type="radio" name="q2" value="1">매달 올 요일·시간을 적어 <b>제출</b>한다 (안 내면 매일 벌점)</label>
+      <label class="opt"><input type="radio" name="q2" value="2">선생님이 알아서 넣어준다</label>
+      <div class="sol">✔ 정기일정은 매달 내가 올 요일·시간을 적어 제출해요. 안 내면 낼 때까지 매일 벌점이에요.</div></div>
+
+    <div class="q" data-a="1"><div class="t">3. <b>늦거나 빠지게</b> 될 때는?</div>
+      <label class="opt"><input type="radio" name="q3" value="0">그냥 안 간다</label>
+      <label class="opt"><input type="radio" name="q3" value="1">앱에서 <b>「사유 제출」</b>로 미리 알린다</label>
+      <label class="opt"><input type="radio" name="q3" value="2">아무에게도 말하지 않는다</label>
       <div class="sol">✔ 늦거나 빠질 땐 「사유 제출」로 미리 알리고, 사감 확인 + 부모님 승인을 받으면 벌점이 없어요.</div></div>
 
-    <div class="q" data-a="1"><div class="t">3. <b>선생님께 연락</b>하고 싶을 때는?</div>
-      <label class="opt"><input type="radio" name="q3" value="0">그냥 큰 소리로 부른다</label>
-      <label class="opt"><input type="radio" name="q3" value="1">홈에서 <b>「메세지」</b>로 주고받는다 (기록이 남아요)</label>
-      <label class="opt"><input type="radio" name="q3" value="2">연락할 방법이 없다</label>
+    <div class="q" data-a="1"><div class="t">4. <b>선생님께 연락</b>하고 싶을 때는?</div>
+      <label class="opt"><input type="radio" name="q4" value="0">그냥 큰 소리로 부른다</label>
+      <label class="opt"><input type="radio" name="q4" value="1">홈에서 <b>「메세지」</b>로 주고받는다 (기록이 남아요)</label>
+      <label class="opt"><input type="radio" name="q4" value="2">연락할 방법이 없다</label>
       <div class="sol">✔ 홈의 「메세지」로 선생님과 주고받으면 되고, 주고받은 내용은 기록으로 남아요.</div></div>
+
+    <div class="q" data-a="1"><div class="t">5. <b>방화벽 해제</b>(사이트 열기)는 어떻게 되나요?</div>
+      <label class="opt"><input type="radio" name="q5" value="0">내가 신청하면 바로 다 열린다</label>
+      <label class="opt"><input type="radio" name="q5" value="1">사이트·이유·시간을 적어 신청 → <b>부모님 승인</b> → 그 시간만큼 열림</label>
+      <label class="opt"><input type="radio" name="q5" value="2">아무 사이트나 열 수 있다</label>
+      <div class="sol">✔ 공부에 필요한 사이트를 사이트·이유·시간과 함께 신청하고, 부모님이 승인하면 그 시간만큼 열려요.</div></div>
 
     <button class="btn" id="submit">채점하기</button>
     <div class="result" id="res"></div>
