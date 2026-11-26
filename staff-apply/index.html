@@ -43,6 +43,16 @@ input:focus,select:focus{outline:none;border-color:var(--coral)}
 .done p{color:var(--muted);font-size:14.5px;margin:0}
 .hp{position:absolute;left:-9999px}
 .foot{text-align:center;color:#9AA0BE;font-size:12px;margin-top:24px}
+textarea{width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;font-size:15px;font-family:inherit;background:#fff;color:var(--ink);min-height:92px;resize:vertical}
+textarea:focus{outline:none;border-color:var(--coral)}
+input[type=file]{width:100%;padding:11px;border:1.5px solid var(--line);border-radius:12px;font-size:13.5px;background:#fff}
+.photo-row{display:flex;align-items:center;gap:14px}
+.photo-prev{width:70px;height:86px;border:1.5px dashed var(--line);border-radius:10px;object-fit:cover;background:#F1F2F8;flex:0 0 auto}
+.photo-row .field{flex:1;margin:0}
+.days{display:flex;flex-wrap:wrap;gap:8px}
+.day{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:13.5px;border:1.5px solid var(--line);border-radius:999px;padding:8px 13px;cursor:pointer;user-select:none;background:#fff}
+.day input{width:auto;margin:0}
+.day.on{border-color:var(--coral);background:#FFF1F3;color:var(--coral-d)}
 @media(max-width:480px){.two{grid-template-columns:1fr}}
 </style>
 </head>
@@ -65,7 +75,7 @@ input:focus,select:focus{outline:none;border-color:var(--coral)}
       <div class="field">
         <label for="s-phone">휴대폰 번호 <span class="req">*</span></label>
         <input id="s-phone" name="phone" type="tel" inputmode="numeric" required autocomplete="tel" placeholder="010-0000-0000">
-        <p class="hint">이 번호가 <b>로그인 아이디</b>가 됩니다.</p>
+        <p class="hint">대표가 이 번호로 연락드립니다.</p>
       </div>
       <div class="two">
         <div class="field">
@@ -78,21 +88,56 @@ input:focus,select:focus{outline:none;border-color:var(--coral)}
         <div class="field">
           <label for="s-role">희망 직책</label>
           <input id="s-role" name="position" placeholder="예: 야간 감독">
+          <p class="hint">실제 직책은 면접 후 정해집니다.</p>
         </div>
       </div>
-      <div class="two">
-        <div class="field">
-          <label for="s-pw">비밀번호 설정 <span class="req">*</span></label>
-          <input id="s-pw" name="password" type="password" required autocomplete="new-password" placeholder="4자 이상">
-        </div>
-        <div class="field">
-          <label for="s-pw2">비밀번호 확인 <span class="req">*</span></label>
-          <input id="s-pw2" type="password" required autocomplete="new-password" placeholder="한 번 더">
+
+      <div class="field">
+        <label for="s-photo">사진(얼굴) <span class="req">*</span></label>
+        <div class="photo-row">
+          <img id="s-photo-prev" class="photo-prev" alt="">
+          <div class="field">
+            <input id="s-photo" type="file" accept="image/*" capture="user" required>
+            <p class="hint">면접 참고용입니다. 선명한 얼굴 사진으로 올려 주세요.</p>
+          </div>
         </div>
       </div>
-      <div class="note">승인되면 위 <b>휴대폰 번호</b>와 <b>직접 정하신 비밀번호</b>로 관리자 앱에 로그인하실 수 있습니다. 비밀번호는 안전하게 암호화되어 저장되며 누구도 다시 볼 수 없습니다.</div>
+
+      <div class="field">
+        <label for="s-career">경력 · 자기소개 <span class="req">*</span></label>
+        <textarea id="s-career" placeholder="이전 근무 경험, 가능한 업무, 간단한 자기소개를 적어 주세요."></textarea>
+      </div>
+
+      <div class="field">
+        <label for="s-resume">이력서 파일</label>
+        <input id="s-resume" type="file" accept="application/pdf,image/*">
+        <p class="hint">있으면 올려 주세요(PDF·사진). 없으면 면접 때 지참하셔도 됩니다.</p>
+      </div>
+
+      <div class="field">
+        <label>근무 가능 시작일</label>
+        <input id="s-from" type="date">
+      </div>
+      <div class="field">
+        <label>근무 가능 요일</label>
+        <div class="days" id="s-days">
+          <label class="day"><input type="checkbox" value="월">월</label>
+          <label class="day"><input type="checkbox" value="화">화</label>
+          <label class="day"><input type="checkbox" value="수">수</label>
+          <label class="day"><input type="checkbox" value="목">목</label>
+          <label class="day"><input type="checkbox" value="금">금</label>
+          <label class="day"><input type="checkbox" value="토">토</label>
+          <label class="day"><input type="checkbox" value="일">일</label>
+        </div>
+      </div>
+      <div class="field">
+        <label for="s-hours">근무 가능 시간 · 주당 시간</label>
+        <input id="s-hours" placeholder="예: 평일 야간(18~23시) / 주 15시간">
+      </div>
+
+      <div class="note">지원서는 대표가 확인 후 연락드립니다. 채용이 확정되면 그때 휴대폰 번호로 앱 로그인 안내를 보내 드립니다.</div>
       <div class="hp" aria-hidden="true"><label>웹사이트<input name="website" tabindex="-1" autocomplete="off"></label></div>
-      <label class="agree"><input type="checkbox" id="s-agree" required> 채용 검토를 위한 개인정보(이름·연락처) 수집·이용에 동의합니다. 수집된 정보는 채용 목적으로만 사용됩니다.</label>
+      <label class="agree"><input type="checkbox" id="s-agree" required> 채용 검토를 위한 개인정보(이름·연락처·사진·경력·근무가능 정보) 수집·이용에 동의합니다. 수집된 정보는 채용 목적으로만 사용됩니다.</label>
       <button class="submit" type="submit" id="s-submit">지원서 보내기</button>
       <p class="msg" id="s-msg" role="status" aria-live="polite"></p>
     </form>
@@ -106,29 +151,81 @@ var form = document.getElementById('staffForm');
 var btn = document.getElementById('s-submit');
 var msg = document.getElementById('s-msg');
 function show(t, ok){ msg.textContent = t; msg.className = 'msg ' + (ok ? 'ok' : 'err'); }
+
+/* 요일 칩 토글 */
+document.querySelectorAll('#s-days .day').forEach(function(lab){
+  var cb = lab.querySelector('input');
+  var sync = function(){ lab.classList.toggle('on', cb.checked); };
+  cb.addEventListener('change', sync); sync();
+});
+
+/* 사진 미리보기 + 작게 줄이기(얼굴 사진이면 600px·JPEG 로 충분) */
+var photoData = '';
+document.getElementById('s-photo').addEventListener('change', function(){
+  var f = this.files && this.files[0]; if(!f){ photoData=''; return; }
+  var r = new FileReader();
+  r.onload = function(){
+    var img = new Image();
+    img.onload = function(){
+      var max=600, w=img.width, h=img.height;
+      if(w>h){ if(w>max){ h=Math.round(h*max/w); w=max; } }
+      else   { if(h>max){ w=Math.round(w*max/h); h=max; } }
+      var c=document.createElement('canvas'); c.width=w; c.height=h;
+      c.getContext('2d').drawImage(img,0,0,w,h);
+      photoData = c.toDataURL('image/jpeg', 0.82);
+      document.getElementById('s-photo-prev').src = photoData;
+    };
+    img.onerror=function(){ photoData=''; };
+    img.src = r.result;
+  };
+  r.readAsDataURL(f);
+});
+
+function fileToData(file){ return new Promise(function(res){ var r=new FileReader(); r.onload=function(){res(r.result);}; r.onerror=function(){res('');}; r.readAsDataURL(file); }); }
+
 form.addEventListener('submit', async function(e){
   e.preventDefault();
   if(form.website.value) return; // 봇 차단
   var name = form.name.value.trim();
   var phone = form.phone.value.replace(/[^0-9]/g,'');
-  var pw = form.password.value;
-  var pw2 = document.getElementById('s-pw2').value;
   var grade = form.grade.value;
+  var career = document.getElementById('s-career').value.trim();
   if(!name){ show('이름을 적어 주세요.'); return; }
   if(phone.length < 10){ show('휴대폰 번호를 정확히 적어 주세요.'); return; }
   if(!grade){ show('지원 등급을 골라 주세요.'); return; }
-  if(pw.length < 4){ show('비밀번호는 4자 이상이어야 합니다.'); return; }
-  if(pw !== pw2){ show('비밀번호 확인이 일치하지 않습니다.'); return; }
+  if(!photoData){ show('얼굴 사진을 올려 주세요.'); return; }
+  if(!career){ show('경력·자기소개를 적어 주세요.'); return; }
   if(!document.getElementById('s-agree').checked){ show('개인정보 수집·이용에 동의해 주세요.'); return; }
+
+  /* 이력서 파일(선택) */
+  var resumeBase64='', resumeMime='', resumeName='';
+  var rf = document.getElementById('s-resume').files[0];
+  if(rf){
+    if(rf.size > 10*1024*1024){ show('이력서 파일이 너무 큽니다(10MB 이하).'); return; }
+    var d = await fileToData(rf);
+    resumeBase64 = d; resumeMime = rf.type || 'application/octet-stream'; resumeName = rf.name || '이력서';
+  }
+
+  /* 근무 가능 */
+  var days = Array.prototype.slice.call(document.querySelectorAll('#s-days input:checked')).map(function(x){return x.value;}).join(',');
+  var from = document.getElementById('s-from').value || '';
+  var hours = document.getElementById('s-hours').value.trim();
+
   btn.disabled = true; btn.textContent = '보내는 중…'; show('', true);
   try{
     var r = await fetch(API, { method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ name:name, phone:phone, password:pw, 등급:grade, 직책:form.position.value.trim() }) });
+      body: JSON.stringify({
+        name:name, phone:phone, 등급:grade, 직책:form.position.value.trim(),
+        경력:career,
+        photoBase64:photoData, photoMime:'image/jpeg',
+        resumeBase64:resumeBase64, resumeMime:resumeMime, resumeName:resumeName,
+        시작가능:from, 가능요일:days, 가능시간:hours
+      }) });
     var j = await r.json().catch(function(){ return {}; });
     if(r.ok && j.ok){
       document.getElementById('card').innerHTML =
         '<div class="done"><div class="ico">✅</div><h2>지원이 접수되었어요</h2>' +
-        '<p>대표 확인 후 승인되면 남겨 주신 <b>휴대폰 번호</b>와 <b>비밀번호</b>로<br>관리자 앱에 로그인하실 수 있습니다.</p></div>';
+        '<p>남겨 주신 내용을 대표가 확인한 뒤 연락드립니다.<br>채용이 확정되면 휴대폰 번호로 앱 로그인 안내를 보내 드립니다.</p></div>';
     } else {
       show((j && j.error) || '접수에 실패했어요. 잠시 후 다시 시도해 주세요.');
       btn.disabled = false; btn.textContent = '지원서 보내기';
