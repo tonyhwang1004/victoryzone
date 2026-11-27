@@ -1027,5 +1027,97 @@ form.addEventListener('submit', async e => {
   }
 });
 </script>
+<!-- 가오픈·사전등록 혜택 팝업 (MJ 11/27 요청) -->
+<style>
+.pop-bg{position:fixed;inset:0;z-index:1000;background:rgba(10,14,40,.62);display:none;align-items:center;justify-content:center;padding:16px}
+.pop-bg.on{display:flex}
+.pop{position:relative;width:100%;max-width:760px;max-height:calc(100vh - 32px);overflow:auto;background:var(--navy);color:#fff;border-radius:22px;padding:26px 22px 18px;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+.pop-x{position:absolute;top:10px;right:12px;z-index:2;width:38px;height:38px;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:22px;line-height:1;cursor:pointer}
+.pop-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pop-card h3{font-size:18px;font-weight:900;line-height:1.35;margin:0 0 10px}
+.pop-card h3 em{font-style:normal;color:var(--lime)}
+.pop-card h3::before{content:"🚩 "}
+.pop-box{background:#fff;color:var(--ink);border-radius:12px;padding:14px 16px;font-size:14px;line-height:1.65}
+.pop-box p{margin:0 0 8px}.pop-box p:last-child{margin:0}
+.pop-box .tag{display:inline-block;background:var(--lime);font-weight:800;font-size:13px;padding:1px 6px;border-radius:4px;margin-bottom:4px}
+.pop-box b.r{color:var(--coral)}
+.pop-box ul{margin:0;padding-left:16px}.pop-box li{margin:0 0 6px}
+.pop-tel{display:block;margin:12px auto 0;max-width:240px;text-align:center;background:var(--lime);color:var(--ink);font-weight:900;font-size:17px;border-radius:999px;padding:8px 0;text-decoration:none}
+.pop-act{display:flex;gap:10px;margin-top:16px}
+.pop-act a{flex:1;text-align:center;border-radius:12px;padding:12px 0;font-weight:800;text-decoration:none}
+.pop-act .a1{background:var(--coral);color:#fff}.pop-act .a2{background:#fff;color:var(--ink)}
+.pop-foot{display:flex;justify-content:space-between;margin-top:12px;font-size:14px}
+.pop-foot button{background:none;border:0;color:rgba(255,255,255,.8);cursor:pointer;padding:6px 2px;font:inherit}
+@media(max-width:640px){.pop-x{position:fixed;top:26px;right:26px;background:rgba(17,24,60,.85);box-shadow:0 0 0 2px rgba(255,255,255,.35)}.pop-grid{grid-template-columns:1fr}.pop{padding:22px 16px 14px}.pop-card h3{font-size:17px}}
+</style>
+<div class="pop-bg" id="openPop" role="dialog" aria-modal="true" aria-labelledby="openPopTitle">
+  <div class="pop">
+    <button class="pop-x" type="button" aria-label="닫기" data-pop-close>×</button>
+    <div class="pop-grid">
+      <div class="pop-card pre-open">
+        <h3 id="openPopTitle">정식 오픈 전,<br><em>미리 와서 확인하세요</em></h3>
+        <div class="pop-box">
+          <p>12월 정식 오픈에 앞서 3일간 센터를 미리 공개합니다.</p>
+          <p>공간을 직접 둘러보고, 상담 후 원하는 자리를 먼저 배정받을 수 있어요.</p>
+          <p>정식 오픈 전, <b>직접 보고 결정하세요!</b></p>
+        </div>
+      </div>
+      <div class="pop-card pre-open">
+        <h3>가오픈 <em>방문 안내</em></h3>
+        <div class="pop-box">
+          <p><span class="tag">운영시간</span><br>11.28–11.29(토·일) 11:00 ~ 20:00<br>11.30(월) 16:00 ~ 22:30</p>
+          <p><span class="tag">예약 방문</span><br>전화·문자로 예약해 주세요.<br><small>(학생 학교/학년/이름/희망 날짜 및 시간)</small></p>
+          <p><span class="tag">현장 방문</span><br>대기가 없으면 바로 상담 가능합니다.</p>
+          <p><b class="r">학부모님과 학생이 함께 오시면 더 자세한 상담이 가능합니다.</b></p>
+        </div>
+        <a class="pop-tel" href="tel:010-9299-8255">010-9299-8255</a>
+      </div>
+      <div class="pop-card">
+        <h3>승리자리 <em>open</em> 사전등록 혜택</h3>
+        <div class="pop-box">
+          <p><b>혜택1) 3+1 이벤트</b><br>12월 오픈일 ~ 2월 등록 시 <b class="r">한 달(3월) 무료 연장</b></p>
+          <p><b>혜택2)</b> 그 외 등록 시 <b class="r">10% 할인</b> 이벤트</p>
+          <p><b>혜택3) 지인추천 할인 이벤트</b><br>· 추천 1명당 2만원 할인<br>· 추천받고 오신 분도 동일하게 2만원 할인<br>· 중복 추천 가능</p>
+        </div>
+      </div>
+      <div class="pop-card">
+        <h3>승리자리 <em>open</em> 사전등록 혜택<br>주의사항</h3>
+        <div class="pop-box">
+          <ul>
+            <li>혜택 1, 2는 <b class="r">정원 마감 시 조기 종료</b>될 수 있습니다.</li>
+            <li>등록은 <b class="r">선착순</b>으로 진행되기 때문에 윈터기간 사전예약은 가능하지만, <b class="r">정원 마감 시에는 최종 등록이 안 되는 점</b> 유의 바랍니다.</li>
+            <li>중간 퇴원 시 기존 이용료가 적용되어 환불됩니다.</li>
+            <li>첫 등록 시 신규등록비(5만원)가 1회에 한해 청구되며, 환불 시 포함되지 않습니다.</li>
+            <li>문의전화 <a href="tel:010-9299-8255">010-9299-8255</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="pop-act">
+      <a class="a1" href="tel:010-9299-8255">전화 상담·방문 예약</a>
+      <a class="a2" href="#apply" data-pop-close>대기 신청하기</a>
+    </div>
+    <div class="pop-foot">
+      <button type="button" data-pop-today>오늘 하루 보지 않기</button>
+      <button type="button" data-pop-close>닫기</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var bg=document.getElementById('openPop'); if(!bg) return;
+  var KEY='vzPopHide', today=new Date().toLocaleDateString('sv');
+  // 가오픈(11/28~11/30)이 끝나면 가오픈 안내 두 칸은 자동으로 숨김
+  if(new Date() >= new Date('2026-12-01T00:00:00+09:00')) bg.querySelectorAll('.pre-open').forEach(function(e){e.remove()});
+  try{ if(localStorage.getItem(KEY)===today) return; }catch(e){}
+  function close(){ bg.classList.remove('on'); document.body.style.overflow=''; }
+  bg.addEventListener('click',function(e){
+    if(e.target===bg || e.target.closest('[data-pop-close]')) close();
+    if(e.target.closest('[data-pop-today]')){ try{localStorage.setItem(KEY,today)}catch(_){} close(); }
+  });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
+  bg.classList.add('on'); document.body.style.overflow='hidden';
+})();
+</script>
 </body>
 </html>
